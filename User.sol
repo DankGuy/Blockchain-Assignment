@@ -8,7 +8,7 @@ contract User {
     string public name; 
     string public location;
     string public contact;
-    // UserType userType;
+    //UserType userType;
 
     
 }
