@@ -1,0 +1,87 @@
+{
+    "contractName": "Farm",
+    "abi": [],
+    "metadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"e:/Studies/TARUC/Degree/Year 2/Year 2 Sem 3/BlockChain/Blockchain-Assignment/Farm.sol\":\"Farm\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"e:/Studies/TARUC/Degree/Year 2/Year 2 Sem 3/BlockChain/Blockchain-Assignment/Farm.sol\":{\"keccak256\":\"0x03389ec0913f702b507b3f8b3c1df561a8ca4709f5d2ece43f645beef90188b3\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://dbabc96a16694b6e61c32f00e30da48792da8e1f1020886d7ea4a9ba37f3005f\",\"dweb:/ipfs/QmZ7Wej6SZ7ZA63bb4Pw8uCwUBoebefrQSNqg58dtHvm1W\"]},\"e:/Studies/TARUC/Degree/Year 2/Year 2 Sem 3/BlockChain/Blockchain-Assignment/utils/Strings.sol\":{\"keccak256\":\"0xa4d1d62251f8574deb032a35fc948386a9b4de74b812d4f545a1ac120486b48a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://8c969013129ba9e651a20735ef659fef6d8a1139ea3607bd4b26ddea2d645634\",\"dweb:/ipfs/QmVhVa6LGuzAcB8qgDtVHRkucn4ihj5UZr8xBLcJkP6ucb\"]},\"e:/Studies/TARUC/Degree/Year 2/Year 2 Sem 3/BlockChain/Blockchain-Assignment/utils/math/Math.sol\":{\"keccak256\":\"0xa1e8e83cd0087785df04ac79fb395d9f3684caeaf973d9e2c71caef723a3a5d6\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://33bbf48cc069be677705037ba7520c22b1b622c23b33e1a71495f2d36549d40b\",\"dweb:/ipfs/Qmct36zWXv3j7LZB83uwbg7TXwnZSN1fqHNDZ93GG98bGz\"]}},\"version\":1}",
+    "bytecode": "6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea2646970667358221220a1acd73b89c67997f04cce2c5197e3c9cc9fcb2fce19a53473c12cfd63a3a6e164736f6c63430008130033",
+    "deployedBytecode": "6080604052600080fdfea2646970667358221220a1acd73b89c67997f04cce2c5197e3c9cc9fcb2fce19a53473c12cfd63a3a6e164736f6c63430008130033",
+    "sourceMap": "98:24:3:-:0;;;;;;;;;;;;;;;;;;;",
+    "deployedSourceMap": "98:24:3:-:0;;;;;",
+    "sourcePath": "e:/Studies/TARUC/Degree/Year 2/Year 2 Sem 3/BlockChain/Blockchain-Assignment/Farm.sol",
+    "compiler": {
+        "name": "solc",
+        "version": "0.8.19+commit.7dd6d404"
+    },
+    "ast": {
+        "absolutePath": "e:/Studies/TARUC/Degree/Year 2/Year 2 Sem 3/BlockChain/Blockchain-Assignment/Farm.sol",
+        "exportedSymbols": {
+            "Farm": [
+                15
+            ],
+            "Math": [
+                1092
+            ],
+            "Strings": [
+                227
+            ]
+        },
+        "id": 16,
+        "license": "MIT",
+        "nodeType": "SourceUnit",
+        "nodes": [
+            {
+                "id": 13,
+                "literals": [
+                    "solidity",
+                    ">=",
+                    "0.8",
+                    ".0",
+                    "<",
+                    "0.9",
+                    ".0"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "32:31:3"
+            },
+            {
+                "absolutePath": "e:/Studies/TARUC/Degree/Year 2/Year 2 Sem 3/BlockChain/Blockchain-Assignment/utils/Strings.sol",
+                "file": "./utils/Strings.sol",
+                "id": 14,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 16,
+                "sourceUnit": 228,
+                "src": "65:29:3",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "abstract": false,
+                "baseContracts": [],
+                "canonicalName": "Farm",
+                "contractDependencies": [],
+                "contractKind": "contract",
+                "fullyImplemented": true,
+                "id": 15,
+                "linearizedBaseContracts": [
+                    15
+                ],
+                "name": "Farm",
+                "nameLocation": "107:4:3",
+                "nodeType": "ContractDefinition",
+                "nodes": [],
+                "scope": 16,
+                "src": "98:24:3",
+                "usedErrors": []
+            }
+        ],
+        "src": "32:90:3"
+    },
+    "functionHashes": {},
+    "gasEstimates": {
+        "creation": {
+            "codeDepositCost": "12600",
+            "executionCost": "66",
+            "totalCost": "12666"
+        }
+    }
+}

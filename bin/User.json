@@ -1,0 +1,307 @@
+{
+    "contractName": "User",
+    "abi": [
+        {
+            "inputs": [],
+            "name": "ID",
+            "outputs": [
+                {
+                    "internalType": "string",
+                    "name": "",
+                    "type": "string"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "contact",
+            "outputs": [
+                {
+                    "internalType": "string",
+                    "name": "",
+                    "type": "string"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "location",
+            "outputs": [
+                {
+                    "internalType": "string",
+                    "name": "",
+                    "type": "string"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "name",
+            "outputs": [
+                {
+                    "internalType": "string",
+                    "name": "",
+                    "type": "string"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "password",
+            "outputs": [
+                {
+                    "internalType": "string",
+                    "name": "",
+                    "type": "string"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        }
+    ],
+    "metadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"ID\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"contact\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"location\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"password\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"e:/Studies/TARUC/Degree/Year 2/Year 2 Sem 3/BlockChain/Blockchain-Assignment/User.sol\":\"User\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"e:/Studies/TARUC/Degree/Year 2/Year 2 Sem 3/BlockChain/Blockchain-Assignment/User.sol\":{\"keccak256\":\"0xa998bce57309ecf049bd269660356aee9557cdd152c49965b65c2ed1cce29256\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://a91094f6c8b102c08db0ae743789a62f5f1d973a5cc6d50ef97a43478478d2d2\",\"dweb:/ipfs/QmepspCjTe3Ma6K7ZQyWz3L8G6UD1HtCt7gS3LFFQTW5A1\"]},\"e:/Studies/TARUC/Degree/Year 2/Year 2 Sem 3/BlockChain/Blockchain-Assignment/utils/Strings.sol\":{\"keccak256\":\"0xa4d1d62251f8574deb032a35fc948386a9b4de74b812d4f545a1ac120486b48a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://8c969013129ba9e651a20735ef659fef6d8a1139ea3607bd4b26ddea2d645634\",\"dweb:/ipfs/QmVhVa6LGuzAcB8qgDtVHRkucn4ihj5UZr8xBLcJkP6ucb\"]},\"e:/Studies/TARUC/Degree/Year 2/Year 2 Sem 3/BlockChain/Blockchain-Assignment/utils/math/Math.sol\":{\"keccak256\":\"0xa1e8e83cd0087785df04ac79fb395d9f3684caeaf973d9e2c71caef723a3a5d6\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://33bbf48cc069be677705037ba7520c22b1b622c23b33e1a71495f2d36549d40b\",\"dweb:/ipfs/Qmct36zWXv3j7LZB83uwbg7TXwnZSN1fqHNDZ93GG98bGz\"]}},\"version\":1}",
+    "bytecode": "608060405234801561001057600080fd5b5061021a806100206000396000f3fe608060405234801561001057600080fd5b50600436106100575760003560e01c806306fdde031461005c578063224b610b1461007a57806333a8c45a14610082578063516f279e1461008a578063b3cea21714610092575b600080fd5b61006461009a565b604051610071919061015c565b60405180910390f35b610064610128565b610064610135565b610064610142565b61006461014f565b600280546100a7906101aa565b80601f01602080910402602001604051908101604052809291908181526020018280546100d3906101aa565b80156101205780601f106100f557610100808354040283529160200191610120565b820191906000526020600020905b81548152906001019060200180831161010357829003601f168201915b505050505081565b600180546100a7906101aa565b600480546100a7906101aa565b600380546100a7906101aa565b600080546100a7906101aa565b600060208083528351808285015260005b818110156101895785810183015185820160400152820161016d565b506000604082860101526040601f19601f8301168501019250505092915050565b600181811c908216806101be57607f821691505b6020821081036101de57634e487b7160e01b600052602260045260246000fd5b5091905056fea264697066735822122015f235e445bcc431b5bc4a46015b274e3422d4445f8347bf7f5e70f7d1d0eec964736f6c63430008130033",
+    "deployedBytecode": "608060405234801561001057600080fd5b50600436106100575760003560e01c806306fdde031461005c578063224b610b1461007a57806333a8c45a14610082578063516f279e1461008a578063b3cea21714610092575b600080fd5b61006461009a565b604051610071919061015c565b60405180910390f35b610064610128565b610064610135565b610064610142565b61006461014f565b600280546100a7906101aa565b80601f01602080910402602001604051908101604052809291908181526020018280546100d3906101aa565b80156101205780601f106100f557610100808354040283529160200191610120565b820191906000526020600020905b81548152906001019060200180831161010357829003601f168201915b505050505081565b600180546100a7906101aa565b600480546100a7906101aa565b600380546100a7906101aa565b600080546100a7906101aa565b600060208083528351808285015260005b818110156101895785810183015185820160400152820161016d565b506000604082860101526040601f19601f8301168501019250505092915050565b600181811c908216806101be57607f821691505b6020821081036101de57634e487b7160e01b600052602260045260246000fd5b5091905056fea264697066735822122015f235e445bcc431b5bc4a46015b274e3422d4445f8347bf7f5e70f7d1d0eec964736f6c63430008130033",
+    "sourceMap": "98:188:6:-:0;;;;;;;;;;;;;;;;;;;",
+    "deployedSourceMap": "98:188:6:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;171:18;;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;142:22;;;:::i;226:21::-;;;:::i;197:22::-;;;:::i;119:16::-;;;:::i;171:18::-;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;142:22::-;;;;;;;:::i;226:21::-;;;;;;;:::i;197:22::-;;;;;;;:::i;119:16::-;;;;;;;:::i;14:548:9:-;126:4;155:2;184;173:9;166:21;216:6;210:13;259:6;254:2;243:9;239:18;232:34;284:1;294:140;308:6;305:1;302:13;294:140;;;403:14;;;399:23;;393:30;369:17;;;388:2;365:26;358:66;323:10;;294:140;;;298:3;483:1;478:2;469:6;458:9;454:22;450:31;443:42;553:2;546;542:7;537:2;529:6;525:15;521:29;510:9;506:45;502:54;494:62;;;;14:548;;;;:::o;567:380::-;646:1;642:12;;;;689;;;710:61;;764:4;756:6;752:17;742:27;;710:61;817:2;809:6;806:14;786:18;783:38;780:161;;863:10;858:3;854:20;851:1;844:31;898:4;895:1;888:15;926:4;923:1;916:15;780:161;;567:380;;;:::o",
+    "sourcePath": "e:/Studies/TARUC/Degree/Year 2/Year 2 Sem 3/BlockChain/Blockchain-Assignment/User.sol",
+    "compiler": {
+        "name": "solc",
+        "version": "0.8.19+commit.7dd6d404"
+    },
+    "ast": {
+        "absolutePath": "e:/Studies/TARUC/Degree/Year 2/Year 2 Sem 3/BlockChain/Blockchain-Assignment/User.sol",
+        "exportedSymbols": {
+            "Math": [
+                1092
+            ],
+            "Strings": [
+                227
+            ],
+            "User": [
+                52
+            ]
+        },
+        "id": 53,
+        "license": "MIT",
+        "nodeType": "SourceUnit",
+        "nodes": [
+            {
+                "id": 40,
+                "literals": [
+                    "solidity",
+                    ">=",
+                    "0.8",
+                    ".0",
+                    "<",
+                    "0.9",
+                    ".0"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "32:31:6"
+            },
+            {
+                "absolutePath": "e:/Studies/TARUC/Degree/Year 2/Year 2 Sem 3/BlockChain/Blockchain-Assignment/utils/Strings.sol",
+                "file": "./utils/Strings.sol",
+                "id": 41,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 53,
+                "sourceUnit": 228,
+                "src": "65:29:6",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "abstract": false,
+                "baseContracts": [],
+                "canonicalName": "User",
+                "contractDependencies": [],
+                "contractKind": "contract",
+                "fullyImplemented": true,
+                "id": 52,
+                "linearizedBaseContracts": [
+                    52
+                ],
+                "name": "User",
+                "nameLocation": "107:4:6",
+                "nodeType": "ContractDefinition",
+                "nodes": [
+                    {
+                        "constant": false,
+                        "functionSelector": "b3cea217",
+                        "id": 43,
+                        "mutability": "mutable",
+                        "name": "ID",
+                        "nameLocation": "133:2:6",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 52,
+                        "src": "119:16:6",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_string_storage",
+                            "typeString": "string"
+                        },
+                        "typeName": {
+                            "id": 42,
+                            "name": "string",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "119:6:6",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_string_storage_ptr",
+                                "typeString": "string"
+                            }
+                        },
+                        "visibility": "public"
+                    },
+                    {
+                        "constant": false,
+                        "functionSelector": "224b610b",
+                        "id": 45,
+                        "mutability": "mutable",
+                        "name": "password",
+                        "nameLocation": "156:8:6",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 52,
+                        "src": "142:22:6",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_string_storage",
+                            "typeString": "string"
+                        },
+                        "typeName": {
+                            "id": 44,
+                            "name": "string",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "142:6:6",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_string_storage_ptr",
+                                "typeString": "string"
+                            }
+                        },
+                        "visibility": "public"
+                    },
+                    {
+                        "constant": false,
+                        "functionSelector": "06fdde03",
+                        "id": 47,
+                        "mutability": "mutable",
+                        "name": "name",
+                        "nameLocation": "185:4:6",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 52,
+                        "src": "171:18:6",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_string_storage",
+                            "typeString": "string"
+                        },
+                        "typeName": {
+                            "id": 46,
+                            "name": "string",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "171:6:6",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_string_storage_ptr",
+                                "typeString": "string"
+                            }
+                        },
+                        "visibility": "public"
+                    },
+                    {
+                        "constant": false,
+                        "functionSelector": "516f279e",
+                        "id": 49,
+                        "mutability": "mutable",
+                        "name": "location",
+                        "nameLocation": "211:8:6",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 52,
+                        "src": "197:22:6",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_string_storage",
+                            "typeString": "string"
+                        },
+                        "typeName": {
+                            "id": 48,
+                            "name": "string",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "197:6:6",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_string_storage_ptr",
+                                "typeString": "string"
+                            }
+                        },
+                        "visibility": "public"
+                    },
+                    {
+                        "constant": false,
+                        "functionSelector": "33a8c45a",
+                        "id": 51,
+                        "mutability": "mutable",
+                        "name": "contact",
+                        "nameLocation": "240:7:6",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 52,
+                        "src": "226:21:6",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_string_storage",
+                            "typeString": "string"
+                        },
+                        "typeName": {
+                            "id": 50,
+                            "name": "string",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "226:6:6",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_string_storage_ptr",
+                                "typeString": "string"
+                            }
+                        },
+                        "visibility": "public"
+                    }
+                ],
+                "scope": 53,
+                "src": "98:188:6",
+                "usedErrors": []
+            }
+        ],
+        "src": "32:254:6"
+    },
+    "functionHashes": {
+        "ID()": "b3cea217",
+        "contact()": "33a8c45a",
+        "location()": "516f279e",
+        "name()": "06fdde03",
+        "password()": "224b610b"
+    },
+    "gasEstimates": {
+        "creation": {
+            "codeDepositCost": "107600",
+            "executionCost": "153",
+            "totalCost": "107753"
+        },
+        "external": {
+            "ID()": "infinite",
+            "contact()": "infinite",
+            "location()": "infinite",
+            "name()": "infinite",
+            "password()": "infinite"
+        }
+    }
+}

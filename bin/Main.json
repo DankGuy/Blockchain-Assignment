@@ -1,0 +1,387 @@
+{
+    "contractName": "Main",
+    "abi": [
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "name": "DCList",
+            "outputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "name": "consumerList",
+            "outputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "name": "farmList",
+            "outputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "name": "retailerList",
+            "outputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "name": "userList",
+            "outputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        }
+    ],
+    "metadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"DCList\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"consumerList\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"farmList\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"retailerList\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"userList\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"e:/Studies/TARUC/Degree/Year 2/Year 2 Sem 3/BlockChain/Blockchain-Assignment/Main.sol\":\"Main\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"e:/Studies/TARUC/Degree/Year 2/Year 2 Sem 3/BlockChain/Blockchain-Assignment/Main.sol\":{\"keccak256\":\"0x3140313219e76e13ed59b7b1a54fc474ca95998fae4968e87d0312283e3e6ef3\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://3bc39756c8906b86701fc0bf64dc7ab2e19c366aedb3381fa4e8a57d2513627e\",\"dweb:/ipfs/QmZDrQq8Duz3xsJWSMH6MFS9R94PiDp7v7NSQTRgxkCBQf\"]},\"e:/Studies/TARUC/Degree/Year 2/Year 2 Sem 3/BlockChain/Blockchain-Assignment/utils/Strings.sol\":{\"keccak256\":\"0xa4d1d62251f8574deb032a35fc948386a9b4de74b812d4f545a1ac120486b48a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://8c969013129ba9e651a20735ef659fef6d8a1139ea3607bd4b26ddea2d645634\",\"dweb:/ipfs/QmVhVa6LGuzAcB8qgDtVHRkucn4ihj5UZr8xBLcJkP6ucb\"]},\"e:/Studies/TARUC/Degree/Year 2/Year 2 Sem 3/BlockChain/Blockchain-Assignment/utils/math/Math.sol\":{\"keccak256\":\"0xa1e8e83cd0087785df04ac79fb395d9f3684caeaf973d9e2c71caef723a3a5d6\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://33bbf48cc069be677705037ba7520c22b1b622c23b33e1a71495f2d36549d40b\",\"dweb:/ipfs/Qmct36zWXv3j7LZB83uwbg7TXwnZSN1fqHNDZ93GG98bGz\"]}},\"version\":1}",
+    "bytecode": "608060405234801561001057600080fd5b50610190806100206000396000f3fe608060405234801561001057600080fd5b50600436106100575760003560e01c806315baa8c01461005c5780638d716b361461008b5780639f4216e81461009e578063a9f38c71146100b1578063b9268c85146100c4575b600080fd5b61006f61006a366004610141565b6100d7565b6040516001600160a01b03909116815260200160405180910390f35b61006f610099366004610141565b610101565b61006f6100ac366004610141565b610111565b61006f6100bf366004610141565b610121565b61006f6100d2366004610141565b610131565b600481815481106100e757600080fd5b6000918252602090912001546001600160a01b0316905081565b600281815481106100e757600080fd5b600081815481106100e757600080fd5b600181815481106100e757600080fd5b600381815481106100e757600080fd5b60006020828403121561015357600080fd5b503591905056fea2646970667358221220ab127cbe301f96388261f4ef6f513442f17dfee116202efcc9f37bc0f4692d0364736f6c63430008130033",
+    "deployedBytecode": "608060405234801561001057600080fd5b50600436106100575760003560e01c806315baa8c01461005c5780638d716b361461008b5780639f4216e81461009e578063a9f38c71146100b1578063b9268c85146100c4575b600080fd5b61006f61006a366004610141565b6100d7565b6040516001600160a01b03909116815260200160405180910390f35b61006f610099366004610141565b610101565b61006f6100ac366004610141565b610111565b61006f6100bf366004610141565b610121565b61006f6100d2366004610141565b610131565b600481815481106100e757600080fd5b6000918252602090912001546001600160a01b0316905081565b600281815481106100e757600080fd5b600081815481106100e757600080fd5b600181815481106100e757600080fd5b600381815481106100e757600080fd5b60006020828403121561015357600080fd5b503591905056fea2646970667358221220ab127cbe301f96388261f4ef6f513442f17dfee116202efcc9f37bc0f4692d0364736f6c63430008130033",
+    "sourceMap": "98:186:4:-:0;;;;;;;;;;;;;;;;;;;",
+    "deployedSourceMap": "98:186:4:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;249:29;;;;;;:::i;:::-;;:::i;:::-;;;-1:-1:-1;;;;;363:32:9;;;345:51;;333:2;318:18;249:29:4;;;;;;;183:23;;;;;;:::i;:::-;;:::i;119:25::-;;;;;;:::i;:::-;;:::i;151:::-;;;;;;:::i;:::-;;:::i;213:29::-;;;;;;:::i;:::-;;:::i;249:::-;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;249:29:4;;-1:-1:-1;249:29:4;:::o;183:23::-;;;;;;;;;;;;119:25;;;;;;;;;;;;151;;;;;;;;;;;;213:29;;;;;;;;;;;;14:180:9;73:6;126:2;114:9;105:7;101:23;97:32;94:52;;;142:1;139;132:12;94:52;-1:-1:-1;165:23:9;;14:180;-1:-1:-1;14:180:9:o",
+    "sourcePath": "e:/Studies/TARUC/Degree/Year 2/Year 2 Sem 3/BlockChain/Blockchain-Assignment/Main.sol",
+    "compiler": {
+        "name": "solc",
+        "version": "0.8.19+commit.7dd6d404"
+    },
+    "ast": {
+        "absolutePath": "e:/Studies/TARUC/Degree/Year 2/Year 2 Sem 3/BlockChain/Blockchain-Assignment/Main.sol",
+        "exportedSymbols": {
+            "Main": [
+                34
+            ],
+            "Math": [
+                1092
+            ],
+            "Strings": [
+                227
+            ]
+        },
+        "id": 35,
+        "license": "MIT",
+        "nodeType": "SourceUnit",
+        "nodes": [
+            {
+                "id": 17,
+                "literals": [
+                    "solidity",
+                    ">=",
+                    "0.8",
+                    ".0",
+                    "<",
+                    "0.9",
+                    ".0"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "32:31:4"
+            },
+            {
+                "absolutePath": "e:/Studies/TARUC/Degree/Year 2/Year 2 Sem 3/BlockChain/Blockchain-Assignment/utils/Strings.sol",
+                "file": "./utils/Strings.sol",
+                "id": 18,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 35,
+                "sourceUnit": 228,
+                "src": "65:29:4",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "abstract": false,
+                "baseContracts": [],
+                "canonicalName": "Main",
+                "contractDependencies": [],
+                "contractKind": "contract",
+                "fullyImplemented": true,
+                "id": 34,
+                "linearizedBaseContracts": [
+                    34
+                ],
+                "name": "Main",
+                "nameLocation": "107:4:4",
+                "nodeType": "ContractDefinition",
+                "nodes": [
+                    {
+                        "constant": false,
+                        "functionSelector": "9f4216e8",
+                        "id": 21,
+                        "mutability": "mutable",
+                        "name": "userList",
+                        "nameLocation": "136:8:4",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 34,
+                        "src": "119:25:4",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                            "typeString": "address[]"
+                        },
+                        "typeName": {
+                            "baseType": {
+                                "id": 19,
+                                "name": "address",
+                                "nodeType": "ElementaryTypeName",
+                                "src": "119:7:4",
+                                "stateMutability": "nonpayable",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                }
+                            },
+                            "id": 20,
+                            "nodeType": "ArrayTypeName",
+                            "src": "119:9:4",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                                "typeString": "address[]"
+                            }
+                        },
+                        "visibility": "public"
+                    },
+                    {
+                        "constant": false,
+                        "functionSelector": "a9f38c71",
+                        "id": 24,
+                        "mutability": "mutable",
+                        "name": "farmList",
+                        "nameLocation": "168:8:4",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 34,
+                        "src": "151:25:4",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                            "typeString": "address[]"
+                        },
+                        "typeName": {
+                            "baseType": {
+                                "id": 22,
+                                "name": "address",
+                                "nodeType": "ElementaryTypeName",
+                                "src": "151:7:4",
+                                "stateMutability": "nonpayable",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                }
+                            },
+                            "id": 23,
+                            "nodeType": "ArrayTypeName",
+                            "src": "151:9:4",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                                "typeString": "address[]"
+                            }
+                        },
+                        "visibility": "public"
+                    },
+                    {
+                        "constant": false,
+                        "functionSelector": "8d716b36",
+                        "id": 27,
+                        "mutability": "mutable",
+                        "name": "DCList",
+                        "nameLocation": "200:6:4",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 34,
+                        "src": "183:23:4",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                            "typeString": "address[]"
+                        },
+                        "typeName": {
+                            "baseType": {
+                                "id": 25,
+                                "name": "address",
+                                "nodeType": "ElementaryTypeName",
+                                "src": "183:7:4",
+                                "stateMutability": "nonpayable",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                }
+                            },
+                            "id": 26,
+                            "nodeType": "ArrayTypeName",
+                            "src": "183:9:4",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                                "typeString": "address[]"
+                            }
+                        },
+                        "visibility": "public"
+                    },
+                    {
+                        "constant": false,
+                        "functionSelector": "b9268c85",
+                        "id": 30,
+                        "mutability": "mutable",
+                        "name": "retailerList",
+                        "nameLocation": "230:12:4",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 34,
+                        "src": "213:29:4",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                            "typeString": "address[]"
+                        },
+                        "typeName": {
+                            "baseType": {
+                                "id": 28,
+                                "name": "address",
+                                "nodeType": "ElementaryTypeName",
+                                "src": "213:7:4",
+                                "stateMutability": "nonpayable",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                }
+                            },
+                            "id": 29,
+                            "nodeType": "ArrayTypeName",
+                            "src": "213:9:4",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                                "typeString": "address[]"
+                            }
+                        },
+                        "visibility": "public"
+                    },
+                    {
+                        "constant": false,
+                        "functionSelector": "15baa8c0",
+                        "id": 33,
+                        "mutability": "mutable",
+                        "name": "consumerList",
+                        "nameLocation": "266:12:4",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 34,
+                        "src": "249:29:4",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                            "typeString": "address[]"
+                        },
+                        "typeName": {
+                            "baseType": {
+                                "id": 31,
+                                "name": "address",
+                                "nodeType": "ElementaryTypeName",
+                                "src": "249:7:4",
+                                "stateMutability": "nonpayable",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                }
+                            },
+                            "id": 32,
+                            "nodeType": "ArrayTypeName",
+                            "src": "249:9:4",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                                "typeString": "address[]"
+                            }
+                        },
+                        "visibility": "public"
+                    }
+                ],
+                "scope": 35,
+                "src": "98:186:4",
+                "usedErrors": []
+            }
+        ],
+        "src": "32:252:4"
+    },
+    "functionHashes": {
+        "DCList(uint256)": "8d716b36",
+        "consumerList(uint256)": "15baa8c0",
+        "farmList(uint256)": "a9f38c71",
+        "retailerList(uint256)": "b9268c85",
+        "userList(uint256)": "9f4216e8"
+    },
+    "gasEstimates": {
+        "creation": {
+            "codeDepositCost": "80000",
+            "executionCost": "129",
+            "totalCost": "80129"
+        },
+        "external": {
+            "DCList(uint256)": "4602",
+            "consumerList(uint256)": "4580",
+            "farmList(uint256)": "4646",
+            "retailerList(uint256)": "4668",
+            "userList(uint256)": "4624"
+        }
+    }
+}

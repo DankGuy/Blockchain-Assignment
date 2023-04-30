@@ -1,0 +1,87 @@
+{
+    "contractName": "Retailer",
+    "abi": [],
+    "metadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"e:/Studies/TARUC/Degree/Year 2/Year 2 Sem 3/BlockChain/Blockchain-Assignment/Retailer.sol\":\"Retailer\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"e:/Studies/TARUC/Degree/Year 2/Year 2 Sem 3/BlockChain/Blockchain-Assignment/Retailer.sol\":{\"keccak256\":\"0xc61ea75c6eec64502421990d80daa7b4cecdb64a02ab6bc01dc6c2674cce30ec\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://bcadf4f66c3125bf839890d9ca793a5e5ebb613564a0df66faef515a569ebe4f\",\"dweb:/ipfs/QmRWSxxTEXicMLfVxDZJrhUGRgrGGZjc9C2wooweJLzZW2\"]},\"e:/Studies/TARUC/Degree/Year 2/Year 2 Sem 3/BlockChain/Blockchain-Assignment/utils/Strings.sol\":{\"keccak256\":\"0xa4d1d62251f8574deb032a35fc948386a9b4de74b812d4f545a1ac120486b48a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://8c969013129ba9e651a20735ef659fef6d8a1139ea3607bd4b26ddea2d645634\",\"dweb:/ipfs/QmVhVa6LGuzAcB8qgDtVHRkucn4ihj5UZr8xBLcJkP6ucb\"]},\"e:/Studies/TARUC/Degree/Year 2/Year 2 Sem 3/BlockChain/Blockchain-Assignment/utils/math/Math.sol\":{\"keccak256\":\"0xa1e8e83cd0087785df04ac79fb395d9f3684caeaf973d9e2c71caef723a3a5d6\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://33bbf48cc069be677705037ba7520c22b1b622c23b33e1a71495f2d36549d40b\",\"dweb:/ipfs/Qmct36zWXv3j7LZB83uwbg7TXwnZSN1fqHNDZ93GG98bGz\"]}},\"version\":1}",
+    "bytecode": "6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea2646970667358221220fcb88210ced54e647a1eb7b69be021b19be8e209f7de3cf36fffda2769beb20464736f6c63430008130033",
+    "deployedBytecode": "6080604052600080fdfea2646970667358221220fcb88210ced54e647a1eb7b69be021b19be8e209f7de3cf36fffda2769beb20464736f6c63430008130033",
+    "sourceMap": "98:28:5:-:0;;;;;;;;;;;;;;;;;;;",
+    "deployedSourceMap": "98:28:5:-:0;;;;;",
+    "sourcePath": "e:/Studies/TARUC/Degree/Year 2/Year 2 Sem 3/BlockChain/Blockchain-Assignment/Retailer.sol",
+    "compiler": {
+        "name": "solc",
+        "version": "0.8.19+commit.7dd6d404"
+    },
+    "ast": {
+        "absolutePath": "e:/Studies/TARUC/Degree/Year 2/Year 2 Sem 3/BlockChain/Blockchain-Assignment/Retailer.sol",
+        "exportedSymbols": {
+            "Math": [
+                1092
+            ],
+            "Retailer": [
+                38
+            ],
+            "Strings": [
+                227
+            ]
+        },
+        "id": 39,
+        "license": "MIT",
+        "nodeType": "SourceUnit",
+        "nodes": [
+            {
+                "id": 36,
+                "literals": [
+                    "solidity",
+                    ">=",
+                    "0.8",
+                    ".0",
+                    "<",
+                    "0.9",
+                    ".0"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "32:31:5"
+            },
+            {
+                "absolutePath": "e:/Studies/TARUC/Degree/Year 2/Year 2 Sem 3/BlockChain/Blockchain-Assignment/utils/Strings.sol",
+                "file": "./utils/Strings.sol",
+                "id": 37,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 39,
+                "sourceUnit": 228,
+                "src": "65:29:5",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "abstract": false,
+                "baseContracts": [],
+                "canonicalName": "Retailer",
+                "contractDependencies": [],
+                "contractKind": "contract",
+                "fullyImplemented": true,
+                "id": 38,
+                "linearizedBaseContracts": [
+                    38
+                ],
+                "name": "Retailer",
+                "nameLocation": "107:8:5",
+                "nodeType": "ContractDefinition",
+                "nodes": [],
+                "scope": 39,
+                "src": "98:28:5",
+                "usedErrors": []
+            }
+        ],
+        "src": "32:94:5"
+    },
+    "functionHashes": {},
+    "gasEstimates": {
+        "creation": {
+            "codeDepositCost": "12600",
+            "executionCost": "66",
+            "totalCost": "12666"
+        }
+    }
+}
