@@ -1,5 +1,5 @@
 # Ignore contract.js
-contract.js
+/public/contract.js
 
 # Ignore package-lock.json
 package-lock.json
