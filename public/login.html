@@ -18,7 +18,7 @@
       }
 
       .login-page {
-        width: 550px;
+        width: 450px;
         margin: 200px auto 200px auto;
       }
 
@@ -104,7 +104,7 @@
       
                 <input type="checkbox" onclick="showpw()" />Show Password<br /><br /><br />
       
-                <button id="loginbtn" onclick="login(event)">Login</button>
+                <button id="loginbtn" onclick="login()">Login</button>
                 <p class="message">
                   Not registered ? <a href="#" onclick="changepage()">Register</a>
                 </p>
@@ -147,28 +147,39 @@
 
       const login = async () => {
         const LoginPassword = document.getElementById("loginpw").value;
-        window.contract.methods
-          .login(LoginPassword)
-          .send({ from: account })
-          .then(() => {
-            return ethereum.request({ method: "eth_requestAccounts" });
-          })
-          .then((accounts) => {
-            address = accounts[0];
-            return window.contract.methods.user(address).call();
-          })
-          .then((userData) => {
-            console.log(userData.loginStatus);
-            if (userData.loginStatus == 1) {
-              window.location.href = "homepage.html";
-            } else {
-              alert("Wrong password");
-            }
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+        await window.contract.methods.login(LoginPassword).send({ from: account })
+        .then((login) => {
+          console.log("abc");
+          alert('You have successfully login from account');
+          window.location.href="/homepage.html";
+         })
       };
+
+      //previuos version
+      // const login = async () => {
+      //   const LoginPassword = document.getElementById("loginpw").value;
+      //   window.contract.methods
+      //     .login(LoginPassword)
+      //     .send({ from: account })
+      //     .then(() => {
+      //       return ethereum.request({ method: "eth_requestAccounts" });
+      //     })
+      //     .then((accounts) => {
+      //       address = accounts[0];
+      //       return window.contract.methods.user(address).call();
+      //     })
+      //     .then((userData) => {
+      //       console.log(userData.loginStatus);
+      //       if (userData.loginStatus == 1) {
+      //         window.location.href = "homepage.html";
+      //       } else {
+      //         alert("Wrong password");
+      //       }
+      //     })
+      //     .catch((err) => {
+      //       console.log(err);
+      //     });
+      // };
 
       function showpw() {
         var x1 = document.getElementById("regpword");

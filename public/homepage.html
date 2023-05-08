@@ -150,6 +150,16 @@
 
       // call to get user info
       getUser();
+
+      const logout = async () => {
+        await window.contract.methods.logout().send({ from: account })
+        .then((logout) => {
+          console.log("abc");
+          alert('You have successfully logout from account');
+          window.location.href="/registration.html";
+         });
+      };
+      
     </script>
   </body>
 </html>

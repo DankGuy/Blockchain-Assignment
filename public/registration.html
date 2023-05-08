@@ -17,7 +17,7 @@
         background-image: linear-gradient(to bottom right, blue, pink);
       }
 
-      .lo-page {
+      .register-page {
         width: 550px;
         margin: 200px auto 200px auto;
       }
@@ -157,25 +157,16 @@
     <script>
       //3-register acount
       const register = async () => {
-        const userType = getUserType(document.getElementById("type").value);
-        const AccountPassword = document.getElementById("regpword").value;
+				const userType = getUserType(document.getElementById('type').value);
+				const AccountPassword = document.getElementById("regpword").value;
         const AccountName = document.getElementById("name").value;
-        const AccountLocation = document.getElementById("location").value;
-        const AccountContact = document.getElementById("contact").value;
-        //const data = await window.contract.methods.register().call();
-        await window.contract.methods
-          .register(
-            AccountPassword,
-            AccountName,
-            AccountLocation,
-            AccountContact,
-            userType
-          )
-          .send({ from: account })
-          .then(() => {
-            alert('Your account has been created <br> User information:<br> userID: ${userData.ID},<br> Name: ${userData.Name},<br> Password: ${userData.Password},<br> Location: ${userData.Location},<br> Contact: ${userData.Contact},<br> UserType: ${userData.UserType},<br> loginStatus: ${userData.loginStatus}');
-         });
-      };
+				const AccountLocation = document.getElementById("location").value;
+				const AccountContact = document.getElementById("contact").value;
+      //const data = await window.contract.methods.register().call();
+				await window.contract.methods.register(AccountPassword,AccountName,AccountLocation, AccountContact,userType).send({from: account }).then((register) => {
+          alert('Your account has been created');
+         }); 
+            }
 
       //4-check account
       const getUser = async () => {
