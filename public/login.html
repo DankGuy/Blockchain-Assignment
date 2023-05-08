@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
+    <script src="contract.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <title>Login and Registration</title>
+    <style>
+       body {
+        background-color: rgba(
+          0,
+          0,
+          255,
+          0.4
+        ); /* for browser that did not support gradient background */
+        background-image: linear-gradient(to bottom right, blue, pink);
+      }
+
+      .login-page {
+        width: 550px;
+        margin: 200px auto 200px auto;
+      }
+
+      .form {
+        position: relative;
+        background-color: rgba(255, 255, 255, 0.5);
+        border-collapse: collapse;
+        border: 2px double black;
+        text-align: left;
+        margin-left: 10px;
+      }
+
+      .form legend {
+        text-align: center;
+        font: 30px bolder;
+        text-decoration: underline;
+      }
+
+      .form label {
+        margin-left: 10%;
+        font-size: 16px;
+      }
+
+      .form input {
+        font: 16px bold;
+        font-family: "Times New Roman", Times, serif;
+        box-sizing: border-box;
+        margin-left: 10%;
+      }
+
+      .form span {
+        font: 16px bold;
+        color: red;
+        font-family: "Times New Roman", Times, serif;
+        margin-left: 10%;
+      }
+
+      .form button {
+        font: 18px bolder;
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+        margin-left: 40%;
+        background-color: mediumslateblue;
+        color: white;
+        padding: 20px;
+        cursor: pointer;
+      }
+
+      .form button:hover,
+      .form button:active {
+        background-color: lightskyblue;
+      }
+
+      .form .message {
+        text-align: center;
+        font-size: 16px;
+      }
+
+      .form .message a {
+        color: blue;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-page">
+        <div class="form">
+            <form id="loginForm" autocomplete="off">
+                <legend>Login</legend>
+                <br /><br />
+      
+                <p style="margin-left: 10%" id="detectedID"></p>
+      
+                <label for="loginpw">Password*</label><br />
+                <input
+                  type="password"
+                  id="loginpw"
+                  name="loginpw"
+                  size="30"
+                  required
+                  placeholder="Enter password"
+                /><br /><br /><br />
+      
+                <input type="checkbox" onclick="showpw()" />Show Password<br /><br /><br />
+      
+                <button id="loginbtn" onclick="login(event)">Login</button>
+                <p class="message">
+                  Not registered ? <a href="#" onclick="changepage()">Register</a>
+                </p>
+              </form>
+        </div>
+    </div>
+      <br />
+      <button onclick="getUser()">GetInfo</button> <br />
+      <p id="InfoArea"></p>
+      <br />
+    <script>
+
+      //4-check account
+      const getUser = async () => {
+        const accounts = await window.ethereum.request({
+          method: "eth_requestAccounts",
+        });
+        const address = accounts[0];
+        const userData = await window.contract.methods.user(address).call();
+        console.log(userData);
+        document.getElementById(
+          "InfoArea"
+        ).innerHTML = `User information:<br> userID: ${userData.ID},<br> Name: ${userData.Name},<br> Password: ${userData.Password},<br> Location: ${userData.Location},<br> Contact: ${userData.Contact},<br> UserType: ${userData.UserType},<br> loginStatus: ${userData.loginStatus}`;
+      };
+
+      //5-get detected id
+      const getID = async () => {
+        const accounts = await window.ethereum.request({
+          method: "eth_requestAccounts",
+        });
+        const address = accounts[0];
+        const userData = await window.contract.methods.user(address).call();
+        console.log(userData);
+        document.getElementById(
+          "detectedID"
+        ).innerHTML = `Detected User ID: ${userData.ID}`;
+      };
+
+      getID();
+
+      const login = async () => {
+        const LoginPassword = document.getElementById("loginpw").value;
+        window.contract.methods
+          .login(LoginPassword)
+          .send({ from: account })
+          .then(() => {
+            return ethereum.request({ method: "eth_requestAccounts" });
+          })
+          .then((accounts) => {
+            address = accounts[0];
+            return window.contract.methods.user(address).call();
+          })
+          .then((userData) => {
+            console.log(userData.loginStatus);
+            if (userData.loginStatus == 1) {
+              window.location.href = "homepage.html";
+            } else {
+              alert("Wrong password");
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      };
+
+      function showpw() {
+        var x1 = document.getElementById("regpword");
+        var x2 = document.getElementById("loginpw");
+        if (x1.type === "password") {
+          x1.type = "text";
+        } else {
+          x1.type = "password";
+        }
+        if (x2.type === "password") {
+          x2.type = "text";
+        } else {
+          x2.type = "password";
+        }
+      }
+
+      function changepage() {
+        window.location.href = "/registration.html";
+      }
+    </script>
+  </body>
+</html>
