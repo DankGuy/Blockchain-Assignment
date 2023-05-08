@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login and Registration</title>
+        <style>
+			body{
+    
+    background-color: rgba(0,0,255,0.4); /* for browser that did not support gradient background */
+    background-image: linear-gradient(to bottom right, blue, pink);
+}
+
+.register-page{
+    width:550px;
+    margin: 200px auto 200px auto;
+}
+
+
+.form{
+    position : relative;
+    background-color:rgba(255,255,255,0.5);
+    border-collapse: collapse;
+    border:2px double black;
+    text-align: left;
+    margin-left: 10px;
+
+}
+
+.form legend{
+    text-align: center;
+    font:30px bolder;
+    text-decoration: underline;
+}
+
+.form label{
+    margin-left: 10%;
+    font-size:16px;
+}
+
+.form input{
+    font:16px bold; 
+    font-family:'Times New Roman', Times, serif;
+    box-sizing: border-box;
+    margin-left: 10%;
+}
+
+.form span{
+    font:16px bold;
+    color: red; 
+    font-family:'Times New Roman', Times, serif;
+    margin-left: 10%;
+}
+
+.form button{
+    font:18px bolder;
+    font-family: Arial, Helvetica, sans-serif; 
+    text-align: center;
+    margin-left: 40%;
+    background-color:mediumslateblue;
+    color:white;
+    padding:20px;
+    cursor:pointer;
+}
+
+.form button:hover, .form button:active{
+    background-color: lightskyblue;
+}
+
+.form .message{
+    text-align: center;
+    font-size: 16px;
+}
+
+.form .message a  {
+    color:blue;
+    text-decoration: none;
+}
+
+.form #loginForm{
+    display: none;
+}
+
+
+.form #error1{
+    display:none;
+}
+		</style>
+		<script type="text/javascript"
+		<script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>		
+		<script src="contract.js"></script>
+    </head>
+    <body>
+        <div class="register-page">
+			<br>
+				<button onclick="getID()">Show Detected ID?</button><br><br>
+        <div class="form">
+            <form id="registerForm" autocomplete="off">
+
+				
+                
+                    <legend>Register</legend><br><br>
+
+					<label  for="type">UserType:</label>
+                        <select style="font-size:16px;" name="type" id="type">
+                        <option value="farm">Farm</option>
+                        <option value="dc">Distribution Center</option>
+                        <option value="retailer">Retailer</option>
+                        <option value="consumer">Consumer</option>
+                    </select>
+                    <br><br>
+
+                    <label for="name">Name</label><br>
+                    <input type="text" id="name" name="name" size="30" required placeholder="Enter Name" ><br><br>
+
+                    <label for="location">Location</label><br>
+                    <input type="text" id="location" name="location" size="30" required placeholder="Enter Location" ><br><br>
+    
+                    <label for="contact">Contact Number</label><br>
+                    <input type="tel" id="contact" name="contact" size="30" required placeholder="Enter Contact number" ><br><br>
+
+                    <label for="regpword">Password</label><br>
+                    <input type="password" id="regpword" name="regpword" size="30" required placeholder="Enter password" ><br><br>
+
+                    <input type="checkbox" onclick="showpw()">Show Password<br><br><br>
+
+                    <button id="regisbtn" onclick="register()">Register</button><br><br>
+                    <p class="message">Already Registered ?  <a href="#" onclick="changepage()">Sign in</a></p>
+                
+				</form>		
+            <form id="loginForm" autocomplete="off">
+               
+                    <legend>Login</legend><br><br>
+					
+					<p style="margin-left: 10%;" id="detectedID"></p>
+            
+                    <label for="loginpw">Password*</label><br>
+                    <input type="password" id="loginpw" name="loginpw" size="30" required placeholder="Enter password" ><br><br><br>
+
+                    <input type="checkbox" onclick="showpw()">Show Password<br><br><br>
+ 
+                    <button id="loginbtn" onclick="login(event)">Login</button>
+                    <p class="message">Not registered ?  <a href="#" onclick="changepage()">Register</a></p>
+                
+            </form>
+        </div>
+		<br>
+				<button onclick="getUser()">GetInfo</button> <br>
+				<p id="InfoArea"></p>
+				<br>
+            
+        </div>
+        <script>    
+            //3-register acount
+            const register = async () => {
+				const userType = getUserType(document.getElementById('type').value);
+				const AccountPassword = document.getElementById("regpword").value;
+              	const AccountName = document.getElementById("name").value;
+				const AccountLocation = document.getElementById("location").value;
+				const AccountContact = document.getElementById("contact").value;
+                //const data = await window.contract.methods.register().call();
+				await window.contract.methods.register(AccountPassword,AccountName,AccountLocation, AccountContact,userType).send({from: account });  
+				alert('Your account has been created');
+            }
+
+			//4-check account
+			const getUser = async () => {
+				const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+				const address = accounts[0];
+				const userData = await window.contract.methods.user(address).call();
+				console.log(userData);
+				document.getElementById("InfoArea").innerHTML = `User information:<br> userID: ${userData.ID},<br> Name: ${userData.Name},<br> Password: ${userData.Password},<br> Location: ${userData.Location},<br> Contact: ${userData.Contact},<br> UserType: ${userData.UserType},<br> loginStatus: ${userData.loginStatus}`;
+			}
+
+			//5-get detected id
+			const getID = async () => {
+				const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+				const address = accounts[0];
+				const userData = await window.contract.methods.user(address).call();
+				console.log(userData);
+				document.getElementById("detectedID").innerHTML = `Detected User ID: ${userData.ID}`;	
+			}
+
+
+			//6-login
+			// const login = async () => {
+			// 	const LoginPassword = document.getElementById("loginpw").value;
+			// 	await window.contract.methods.login(LoginPassword).send({from: account })		
+			// 	const accounts = await ethereum.request({ method: "eth_requestAccounts"});
+			// 	address = accounts[0];
+			// 	const userData = await window.contract.methods.user(address).call();
+			// 	console.log(userData.loginStatus);
+			// 	if (userData.loginStatus == 1) {
+			// 		window.location.href = "localhost:5000/public/index.html";
+			// 	}
+			// }
+
+			const login = async () => {
+				const LoginPassword = document.getElementById("loginpw").value;
+				window.contract.methods
+					.login(LoginPassword)
+					.send({ from: account })
+					.then(() => {
+					return ethereum.request({ method: "eth_requestAccounts" });
+					})
+					.then((accounts) => {
+					address = accounts[0];
+					return window.contract.methods.user(address).call();
+					})
+					.then((userData) => {
+					console.log(userData.loginStatus);
+					if (userData.loginStatus == 1) {
+						window.location.href = "homepage.html";
+					}
+					else {
+						alert("Wrong password");
+					}
+					})
+					.catch((err) => {
+					console.log(err);
+					});
+				};
+
+        
+        // //4- buyer buy the product, transfer wei, update the ownership
+        // const BuyerBuyProduct = async () =>{
+        //     //need to retrieve product data from the contract
+        //     const data = await window.contract.methods.getInitialProduct().call();
+        //     const price = data[1]; 
+        //     const ownerAddress = data[2];
+        //     await window.contract.methods.buyProduct(ownerAddress).send({from: account, value:price });  
+        // }
+        
+        // //5- set new product- product name and price, owner address				
+        //      const setNewAccount = async () => {
+        //       const AccountPassword = document.getElementById("pword").value;
+        //       const AccountName = document.getElementById("Pprice").value;
+
+        //       await window.contract.methods.setProduct(ProductName, ProductPrice).send({from: account });  
+        //       document.getElementById("Pname").value = "";
+        //       document.getElementById("Pprice").value= "";
+        //     }
+
+		function showpw() {
+			var x1 = document.getElementById("regpword");
+			var x2=document.getElementById("loginpw")
+			if (x1.type === "password") {
+				x1.type = "text";
+			} else {
+				x1.type = "password";
+			}
+			if (x2.type === "password") {
+				x2.type = "text";
+			} else {
+				x2.type = "password";
+		}
+    }
+
+    // function regis(){
+    //     if (validregis()==true){
+    //         console.log(true)
+    //         var userid=document.getElementById("userid").value;
+    //         var pword=document.getElementById("pword").value;
+    //         localStorage.setItem('userid',JSON.stringify(userid));
+    //         localStorage.setItem('pword', JSON.stringify(pword));
+    //         alert('Your account has been created');
+            
+    //     } 
+    // }
+
+    function getUserType(type) {
+        switch (type) {
+          case 'farm':
+            return 0;
+          case 'dc':
+            return 1;
+          case 'retailer':
+            return 2;
+          case 'consumer':
+            return 3;
+          default:
+            return -1;
+        }
+        alert('successfully indicate usertype');
+      }
+
+	function changepage() {
+		var x = document.getElementById("loginForm");
+		var y = document.getElementById("registerForm");
+		if (x.style.display === "none") {
+			x.style.display = "block";
+			y.style.display = "none";
+		} else {
+			x.style.display = "none";
+			y.style.display = "block";
+		}
+    }
+
+	</script>
+    </body>
+</html>

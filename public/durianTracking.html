@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Durian Tracking</title>
+        <style>
+    body {
+		background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://www.myfreetextures.com/wp-content/uploads/2014/11/another-flowing-blue-abstract-texture.jpg");
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-size: cover;
+		margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+    header {
+        /* background-color: #146C94; */
+        color: #fff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+    }
+    nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+    nav li {
+        margin: 0 10px;
+    }
+    nav a {
+        color: #fff;
+        text-decoration: none;
+        padding: 10px;
+    }
+	nav a:hover {
+		background-color: #fff;
+		color: #146C94;
+		border-radius: 5px;
+	}
+	nav a {
+		transition: all 0.3s ease 0s;
+	}
+    main {
+		padding: 10px;
+		width: 80vw;
+		margin-left: auto;
+		margin-right: auto;
+	}
+    form#infoInputForm label {
+		font-size: 1.3em;
+	}
+    form#infoInputForm input {
+		font-size: 1.3em;
+	}
+	form#infoInputForm button {
+		font-size: 1.3em;
+		margin-top: 5px;
+		background-color: #146C94;
+		color: #fff;
+		border: none;
+		border-radius: 5px;
+		padding: 10px;
+		transition: all 0.3s ease 0s;
+	}
+	form#infoInputForm button:hover {
+		border-radius: 5px;
+		opacity: 0.9;
+	}
+	form#infoInputForm input[type="text"]:focus {
+		outline: none;
+	}
+
+    form#infoInputForm {
+		display: flex;
+		flex-direction: column;
+		background-color: #fff;
+		border: 1px black solid;
+		border-radius: 1em;
+		width: 50vw;
+		padding: 20px;
+		margin-left: auto;
+		margin-right: auto;
+    }
+</style>
+</head>
+<body>
+    <header>
+        <h1 style="margin-left: 2vw;">DurianChain</h1>
+        <nav>
+          <ul>
+			<li><a href="./homepage.html">Home</a></li>
+			<li><a href="#">Durian Initializer</a></li>
+			<li><a href="./durianDistribution.html">Durian Distribution</a></li>
+			<li><a href="./durianTracking.html">Durian Tracking</a></li>
+			</ul>
+        </nav>
+    </header>
+    <main>
+        <form id="infoInputForm">
+            <label for="durianID">Durian ID: </label>
+            <input type="text" name="durianID" placeholder="Durian ID">
+
+        </form>
+    </main>
+
+    <script>
+        //1- connect metamask
+        let account;
+        
+        const accessToMetamask = async () => {
+            if(window.ethereum !== "undefined") {
+                const accounts = await ethereum.request({ method: "eth_requestAccounts"});
+                account = accounts[0];
+            }
+        }
+
+         //2- connect to smart contract
+         const accessToContract = async () => {
+            const ABI = [
+	{
+		"inputs": [],
+		"name": "abc",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_password",
+				"type": "string"
+			}
+		],
+		"name": "login",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "_loginStatus",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "logout",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_password",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_name",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_location",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_contact",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_role",
+				"type": "uint256"
+			}
+		],
+		"name": "register",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_treeID",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "weight_g",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_timeHarvest",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "_workerHarvest",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_description",
+				"type": "string"
+			}
+		],
+		"name": "registerDurian",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_species",
+				"type": "string"
+			}
+		],
+		"name": "registerTree",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_ID",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_durianid",
+				"type": "string"
+			}
+		],
+		"name": "sendDurian",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_durianid",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "time_arrival",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "_feedback",
+				"type": "string"
+			}
+		],
+		"name": "updateDurian",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "consumerList",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "DCList",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "DurianIn",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "treeID",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "treeSpecies",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "treeBelongFarmID",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "durianCount",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct testing.Tree",
+				"name": "durianBelongTree",
+				"type": "tuple"
+			},
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "durianID",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "durianWeight_g",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "description",
+						"type": "string"
+					},
+					{
+						"internalType": "enum testing.grade",
+						"name": "durianGrade",
+						"type": "uint8"
+					}
+				],
+				"internalType": "struct testing.DurianInfo",
+				"name": "durianInfo",
+				"type": "tuple"
+			},
+			{
+				"internalType": "enum testing.location",
+				"name": "DurianLocation",
+				"type": "uint8"
+			},
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "timeArrivalDC",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timeArrivalRetailer",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timeConsume",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "customerFeedback",
+						"type": "string"
+					}
+				],
+				"internalType": "struct testing.Update",
+				"name": "updateInfo",
+				"type": "tuple"
+			},
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "timeHarvest",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "workerHarvest",
+						"type": "string"
+					}
+				],
+				"internalType": "struct testing.Harvest",
+				"name": "harvestInfo",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "farmList",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "retailerList",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "speciesArray",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_durianid",
+				"type": "string"
+			}
+		],
+		"name": "trackAndTrace",
+		"outputs": [
+			{
+				"components": [
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "treeID",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "treeSpecies",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "treeBelongFarmID",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "durianCount",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct testing.Tree",
+						"name": "durianBelongTree",
+						"type": "tuple"
+					},
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "durianID",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "durianWeight_g",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string",
+								"name": "description",
+								"type": "string"
+							},
+							{
+								"internalType": "enum testing.grade",
+								"name": "durianGrade",
+								"type": "uint8"
+							}
+						],
+						"internalType": "struct testing.DurianInfo",
+						"name": "durianInfo",
+						"type": "tuple"
+					},
+					{
+						"internalType": "enum testing.location",
+						"name": "DurianLocation",
+						"type": "uint8"
+					},
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "timeArrivalDC",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "timeArrivalRetailer",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "timeConsume",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string",
+								"name": "customerFeedback",
+								"type": "string"
+							}
+						],
+						"internalType": "struct testing.Update",
+						"name": "updateInfo",
+						"type": "tuple"
+					},
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "timeHarvest",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string",
+								"name": "workerHarvest",
+								"type": "string"
+							}
+						],
+						"internalType": "struct testing.Harvest",
+						"name": "harvestInfo",
+						"type": "tuple"
+					}
+				],
+				"internalType": "struct testing.Durian",
+				"name": "durian",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "TreeIn",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "treeID",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "treeSpecies",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "treeBelongFarmID",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "durianCount",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "user",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "ID",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "Password",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "Name",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "Location",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "Contact",
+				"type": "string"
+			},
+			{
+				"internalType": "enum testing.usertype",
+				"name": "UserType",
+				"type": "uint8"
+			},
+			{
+				"internalType": "enum testing.loginstatus",
+				"name": "loginStatus",
+				"type": "uint8"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+];
+            const Address = "0x483fF4720CFbBAF000C57E79b6ae21234d7A3106";
+            window.web3 = await new Web3(window.ethereum); //how to access to smart contract 
+            window.contract = await new window.web3.eth.Contract( ABI, Address); //how you create an instance of that contract by using the abi and address  
+        }
+
+        //3-read data from smart contract
+        const readfromContract = async () => {
+			
+        }
+        
+        accessToMetamask();
+        accessToContract();
+</script>
+
+</body>
+</html>
