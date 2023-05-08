@@ -1,0 +1,8 @@
+# Ignore contract.js
+contract.js
+
+# Ignore package-lock.json
+package-lock.json
+
+# Ignore node_modules directory
+node_modules/

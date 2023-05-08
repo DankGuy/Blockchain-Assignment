@@ -824,7 +824,7 @@ const accessToMetamask = async () => {
 }
 ];
     
-    const Address = "0x2185734BCF8Ed6B5a7DaBB56Cc2d26622632757e";
+    const Address = "0x5754fe7e84AcE58E0bb59AAdC2c7C3A473D19f69";
     window.web3 = await new Web3(window.ethereum); //how to access to smart contract 
     window.contract = await new window.web3.eth.Contract( ABI, Address); //how you create an instance of that contract by using the abi and address  
 }
