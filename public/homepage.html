@@ -58,11 +58,13 @@
         margin: 0 auto;
       }
       .card {
-        height: 50vh;
         background-color: #fff;
         padding: 20px;
         border-radius: 10px;
         box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+      }
+      .card p {
+        padding: 20px;
       }
       h2 {
         margin-top: 0;
@@ -116,5 +118,38 @@
         </div>
       </div>
     </main>
+
+    <script>
+      const getUser = async () => {
+        const accounts = await window.ethereum.request({
+          method: "eth_requestAccounts",
+        });
+        const address = accounts[0];
+        const userData = await window.contract.methods.user(address).call();
+        var userType;
+        if (userData.UserType == 0) {
+          userType = "Farmer"
+        }
+        else if (userData.UserType == 1) {
+          userType = "Distributor"
+        }
+        else if (userData.UserType == 2) {
+          userType = "Retailer"
+        }
+        else {
+          userType = "Consumer"
+        }
+
+        console.log(userData);
+        document.getElementById("card-id").innerHTML = `ID: ${userData.ID}`;
+        document.getElementById("card-name").innerHTML = `Name: ${userData.Name}`;
+        document.getElementById("card-location").innerHTML = `Location: ${userData.Location}`;
+        document.getElementById("card-contact").innerHTML = `Contact: ${userData.Contact}`;
+        document.getElementById("card-userType").innerHTML = `UserType: ${userType}`;
+      };
+
+      // call to get user info
+      getUser();
+    </script>
   </body>
 </html>
