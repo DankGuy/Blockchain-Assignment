@@ -90,6 +90,15 @@
 			margin-left: auto;
 			margin-right: auto;
 		}
+		div#updateInput{
+			display:none;
+		}
+		div#onlyCustomer{
+			display:none;
+		}
+		button#updateBtn{
+			display:none;
+		}
 	</style>
 </head>
 <body>
@@ -112,8 +121,41 @@
             <input type="text" id ="durianID" name="durianID" placeholder="Durian ID">
 			<button onclick="searchDurian()">Search</button>
 			<p id="durianArea"></p>
-
+			<button id="updateBtn" onclick="update()">Update</button>
+			<div id="updateInput">
+				<label for="timeArrival">Time Arrival: </label><br>
+				<input type="datetime-local" id="timeArrival" name="timeArrival" required><br>
+				<div id="onlyCustomer">
+					<label for="Rating">Rating:</label><br>
+					<label for="creaminess">Creaminess </label>
+					<select style="font-size: 16px" name="creaminess" id="creaminess">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+					</select><br>
+					<label for="taste">Taste </label>
+					<select style="font-size: 16px" name="taste" id="taste">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+					</select><br>
+					<label for="fragrance">Fragrance </label>
+					<select style="font-size: 16px" name="fragrance" id="fragrance">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+					</select><br>
+				</div>
+				<button id="confrimUpdate" onclick="confirmUpdate()">Confirm Update</button>
+			</div>
         </form>
+		
     </main>
 
     <script>
@@ -147,7 +189,70 @@
 			Taste(1-5):${updateInfo.rate_taste}<br> 
 			Fragrance(1-5):${updateInfo.rate_fragrance}<br> 
 			`;
+			const user=await window.contract.methods.user(account).call();
+			const userType=user.UserType;
+			var z = document.getElementById("updateBtn");
+			if(userType!=0){
+				z.style.display="block";
+			}
 		};
+
+		const update = async () => {
+			event.preventDefault();
+			const user=await window.contract.methods.user(account).call();
+			const userType=user.UserType;
+			var x = document.getElementById("updateInput");
+    		var y = document.getElementById("onlyCustomer");
+			x.style.display="block";
+			if(userType==3){
+				y.style.display="block";
+			}
+			// const updateInfo= await window.contract.methods.updateDurian(id,blockTimestamp,).call();
+
+      };
+
+	  const confirmUpdate = async () => {
+			event.preventDefault();	
+			const user=await window.contract.methods.user(account).call();
+			const userType=user.UserType;		
+			const id = document.getElementById("durianID").value;
+			var tempcreaminess=0;
+			var temptaste=0;
+			var tempfragrance=0;
+			const unixTimestamp = Date.parse(timeArrival) / 1000; // divide by 1000 to convert to seconds
+        	const secondsPerBlock = 15;
+        	const blockTimestamp = Math.floor(unixTimestamp / secondsPerBlock) * secondsPerBlock;
+			if(userType==3){
+				tempcreaminess=getRating(document.getElementById('creaminess').value);
+				temptaste=getRating(document.getElementById('taste').value);
+				tempfragrance=getRating(document.getElementById('fragrance').value);	
+			}
+			console.log(tempcreaminess);
+			console.log(temptaste);
+			console.log(tempfragrance);
+			const updateDurian=window.contract.methods.updateDurian(id,blockTimestamp,tempcreaminess,temptaste,tempfragrance).call({from : account});
+      };
+
+	  function getRating(type) {
+        switch (type) {
+          case "0":
+            return 0;
+          case "1":
+            return 1;
+          case "2":
+            return 2;
+          case "3":
+            return 3;
+	      case "4":
+            return 4;
+          default:
+            return -1;
+        }
+        alert("successfully indicate usertype");
+      }
+
+
+
 
 		const logout = async () => {
         await window.contract.methods.logout().send({ from: account })
