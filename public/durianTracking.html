@@ -109,19 +109,45 @@
     <main>
         <form id="infoInputForm">
             <label for="durianID">Durian ID: </label>
-            <input type="text" name="durianID" placeholder="Durian ID">
+            <input type="text" id ="durianID" name="durianID" placeholder="Durian ID">
+			<button onclick="searchDurian()">Search</button>
+			<p id="durianArea"></p>
 
         </form>
     </main>
 
     <script>
-        //3-read data from smart contract
-        const readfromContract = async () => {
-			
-        }
-        
-        accessToMetamask();
-        accessToContract();
+        const searchDurian = async () => {
+			event.preventDefault();
+			//await window.contract.methods.trackAndTrace.call({ from: account })
+			const id = document.getElementById("durianID").value;
+  			const durianData = await window.contract.methods.trackAndTrace(id).call({from : account});
+  			console.log(durianData);
+			const updateInfo= await window.contract.methods.updateInfo(id).call();
+			console.log(updateInfo);
+			document.getElementById("durianArea").innerHTML = `Durian information:<br><br>
+			About Tree<br>
+			Tree ID: ${durianData.durianBelongTree.treeID}<br>
+			Species: ${durianData.durianBelongTree.treeSpecies}<br>
+			Belongs to: ${durianData.durianBelongTree.treeBelongFarmID}<br>
+			Durian count: ${durianData.durianBelongTree.durianCount}<br><br>
+			About Durian<br>
+			Durian ID :  ${durianData.durianID}<br>
+			Weight :  ${durianData.durianWeight_g}<br>
+			Description: ${durianData.description}<br><br>
+			Harvest Info<br>
+			Time Harvest : ${durianData.harvestInfo.timeHarvest}<br>
+			Worker Harvest : ${durianData.harvestInfo.workerHarvest}<br><br>
+			Update Information<br>
+			Time Arrival in Distribution Centre: ${updateInfo.timeArrivalDC}<br>
+			Time Arrival in Retailer: ${updateInfo.timeArrivalRetailer}<br>
+			Time Arrival in Consumer: ${updateInfo.timeConsume}<br><br>
+			Rating:<br>
+			Creaminess(1-5):${updateInfo.rate_creaminess}<br>  
+			Taste(1-5):${updateInfo.rate_taste}<br> 
+			Fragrance(1-5):${updateInfo.rate_fragrance}<br> 
+			`;
+		};
 
 		const logout = async () => {
         await window.contract.methods.logout().send({ from: account })
