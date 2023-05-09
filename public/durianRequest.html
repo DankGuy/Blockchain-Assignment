@@ -54,6 +54,122 @@
             margin-left: auto;
             margin-right: auto;
         }
+        form label {
+            font-size: 1em;
+        }
+        form input {
+            font-size: 1em;
+        }
+        form button {
+            font-size: 1em;
+            margin-top: 10px;
+            background-color: #146C94;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            transition: all 0.3s ease 0s;
+            width: 100%;
+        }
+        .request-respond-prep {
+            display: flex;
+            flex-direction: row;
+        }
+        .sent-div {
+            background-color: white;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: row;
+            overflow: auto;
+        }
+        .received-div {
+            background-color: white;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            overflow: auto;
+        }
+        .send-durian-div h2{
+            text-align: center;
+        }
+        #add-durian {
+            display: flex;
+            flex-direction: column;
+            margin-left: 40px;
+        }
+        input[type="text"]:focus {
+            outline: none;
+        }
+        .input-segment {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin: 10px 0;
+        }
+        .input-segment label {
+            flex-basis: 30%;
+            margin-right: 10px;
+            text-align: right;
+        }
+        .input-segment input {
+            flex-basis: 70%;
+        }
+        .received-list-div, .sent-list-div {
+            flex-basis: 50%;
+        }
+        .manage-received-request, .manage-sent-request {
+            flex-basis: 50%;
+        }
+        .manage-received-request h2, .manage-sent-request h2 {
+            text-align: center;
+        }
+        .manage-received-request hr, .manage-sent-request hr {
+            margin-bottom: 20px;
+        }
+        .received-list-div h2, .sent-list-div h2 {
+            text-align: center;
+        }
+        #add-durian hr {
+            border: none;
+            background-color: black;
+            height: 1px;
+            margin: 1px 0;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        .send-durian-div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .send-durian-form {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            width: 400px;
+        }
+        .received-div hr {
+            border: none;
+            background-color: black;
+            height: 1px;
+            margin: 10px 0;
+        }
+        .sent-list-div {
+            margin: 10px;
+        }
+        .manage-sent-request {
+            margin: 10px;
+        }
     </style>
     <title>Durian Request</title>
 </head>
@@ -71,6 +187,190 @@
           </ul>
         </nav>
     </header>
-  
+    <main>
+        <div class="request-div">
+            <div class="received-div">
+                <div class="request-respond-prep">
+                    <div class="received-list-div">
+                        <h2>Received Request</h2>
+                        <hr/>
+                        <table id="received-table">
+                            <thead>
+                                <tr>
+                                    <th>Request ID</th>
+                                    <th>Destination ID</th>
+                                    <th>Species</th>
+                                    <th>Quantity</th>
+                                </tr>    
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="manage-received-request">
+                        <form id="add-durian">
+                            <h2>Add Durian to Request</h2>
+                            <hr/>
+                            <div class="input-segment">
+                                <label for="requestID">Request ID: </label>
+                                <input type="text" id="requestID" name="requestID" placeholder="Request ID" required>    
+                            </div>
+                            <div class="input-segment">
+                                <label for="durianID">Durian ID: </label>
+                                <input type="text" id="durianID" name="durianID" placeholder="Durian ID" required>    
+                            </div>
+                            <button onclick="addDurianToRequest()">Add</button>
+                        </form>
+                    </div>    
+                </div>
+                <hr/>
+                <div class="send-durian-div">
+                    <form id="send-durian-form">
+                        <h2>Send Durian</h2>
+                        <hr/>
+                        <div class="input-segment">
+                            <label for="requestID">Request ID: </label>
+                            <input type="text" name="requestID" id="requestID" required>
+                        </div>
+                        <button onclick="sendDurian()">Send</button>
+                    </form>
+                </div>
+            </div>
+            <div class="sent-div">
+                <div class="sent-list-div">
+                    <h2>Sent Request</h2>
+                    <hr/>
+                    <table id="sent-table">
+                        <thead>
+                            <tr>
+                                <th>Request ID</th>
+                                <th>Requester</th>
+                                <th>Request Date</th>
+                                <th>Request Status</th>
+                            </tr>    
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="manage-sent-request">
+                    <form id="send-request-form">
+                        <h2>Send Request</h2>
+                        <hr/>
+                        <div class="input-segment">
+                            <label for="userID">User ID: </label>
+                            <input type="text" id="userID" name="userID" placeholder="User ID" required>    
+                        </div>
+                        <div class="input-segment">
+                            <label for="species">Species: </label>
+                            <input type="text" id="species" name="species" placeholder="Species" required>    
+                        </div>
+                        <div class="input-segment">
+                            <label for="quantity">Quantity: </label>
+                            <input type="text" id="quantity" name="quantity" placeholder="Quantity" required>    
+                        </div>
+                        <button onclick="sendRequest()">Send</button>
+                    </form>
+                </div>    
+            </div>
+        </div>
+    </main>
+    <script>
+
+        // received request
+        const receivedRequests = [];
+
+        const getReceivedRequests = async () => {
+            var receivedLength = await window.contract.methods.getRequestReceivedLength().call({ from: account });
+            console.log(receivedLength);
+            for (var i = 0; i < receivedLength; i++) {
+                var temp = await window.contract.methods.requestReceived(account, i).call({ from: account });
+                receivedRequests.push({requestID: temp.requestID, destinationID: temp.destinationID, species: temp.species, quantity: temp.quantity});
+            }
+        }
+
+        getReceivedRequests();
+
+        const tableBody = document.querySelector("#received-table tbody");
+
+        if (receivedRequests.length === 0) {
+            const row = tableBody.insertRow();
+            const cell = row.insertCell();
+            cell.colSpan = 4;
+            cell.textContent = "No requests received";
+            cell.style.textAlign = "center";
+        }
+        else {
+            receivedRequests.forEach(request => {
+                const row = tableBody.insertRow();
+                const requestIDCell = row.insertCell();
+                const destinationIDCell = row.insertCell();
+                const speciesCell = row.insertCell();
+                const quantityCell = row.insertCell();
+
+                requestIDCell.textContent = request.requestID;
+                destinationIDCell.textContent = request.destinationID;
+                speciesCell.textContent = request.species;
+                quantityCell.textContent = request.quantity;
+            });
+        }
+
+        // sent request
+        const sentRequests = [];
+
+        const getSentRequests = async () => {
+            var receivedLength = await window.contract.methods.getRequestSentLength().call({ from: account });
+            console.log(receivedLength);
+            for (var i = 0; i < receivedLength; i++) {
+                var temp = await window.contract.methods.requestReceived(account, i).call({ from: account });
+                receivedRequests.push({requestID: temp.requestID, destinationID: temp.destinationID, species: temp.species, quantity: temp.quantity});
+            }
+        }
+
+        getSentRequests();
+
+        const tableBodySent = document.querySelector("#sent-table tbody");
+
+        if (sentRequests.length === 0) {
+            const row = tableBodySent.insertRow();
+            const cell = row.insertCell();
+            cell.colSpan = 4;
+            cell.textContent = "No requests received";
+            cell.style.textAlign = "center";
+        }
+        else {
+            sentRequests.forEach(request => {
+                const row = tableBodySent.insertRow();
+                const requestIDCell = row.insertCell();
+                const destinationIDCell = row.insertCell();
+                const speciesCell = row.insertCell();
+                const quantityCell = row.insertCell();
+
+                requestIDCell.textContent = request.requestID;
+                destinationIDCell.textContent = request.destinationID;
+                speciesCell.textContent = request.species;
+                quantityCell.textContent = request.quantity;
+            });
+        }
+
+        // send request
+        const sendRequest = async () => {
+            const send_userID = $("#userID").val();
+            const send_species = $("#species").val();
+            const quantity = parseInt($("#quantity").val());
+
+            await window.contract.methods.sendRequest(send_userID, send_species, quantity).send({ from: account });
+        }
+
+        const logout = async () => {
+            await window.contract.methods.logout().send({ from: account })
+            .then((logout) => {
+            alert('You have successfully logout from account');
+            window.location.href="/registration.html";
+            });
+        };
+
+    </script>
+
 </body>
 </html>
