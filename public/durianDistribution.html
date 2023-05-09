@@ -55,97 +55,6 @@
 		margin-left: auto;
 		margin-right: auto;
 	}
-	#titleIndicator {
-		text-align: center;
-		color: white;
-		font-size: 2em;
-	}
-	#content {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-	#content form label {
-		font-size: 1.3em;
-	}
-	#content form input {
-		font-size: 1.3em;
-	}
-	#content form button {
-		font-size: 1.3em;
-		margin-top: 5px;
-		background-color: #146C94;
-		color: #fff;
-		border: none;
-		border-radius: 5px;
-		padding: 10px;
-		transition: all 0.3s ease 0s;
-	}
-	#content form button:hover {
-		border-radius: 5px;
-		opacity: 0.9;
-	}
-	#content form input[type="text"]:focus {
-		outline: none;
-	}
-	div#content form {
-		display: flex;
-		flex-direction: column;
-		background-color: #fff;
-		border: 1px black solid;
-		border-radius: 1em;
-		width: 50vw;
-		padding: 20px;
-		margin-left: auto;
-		margin-right: auto;
-	}
-
-	.accordion-content {
-		background-color: white;
-		border: 1px solid black;
-		padding: 1em;
-		overflow: auto;
-		font-size: 0.85em;
-	}
-
-	#accordion {
-		margin-top: 20px;
-		margin-left: auto;
-		margin-right: auto;
-		width: 50vw;
-		background-color: #fff;
-		border: 1px black solid;
-		border-radius: 1em;
-		padding: 20px;
-	}
-	#accordion h3 {
-		text-align: center;
-	}
-	#accordion ul {
-		list-style: none;
-	}
-	#accordion li {
-		margin: 10px;
-	}
-	#accordion {
-		background-color: #eee;
-		color: #444;
-		padding: 18px;
-		width: 100%;
-		text-align: left;
-		border: none;
-		outline: none;
-		transition: 0.4s;
-	}
-	#accordion button {
-		font-size: 1em;
-		width: 100%;
-		padding: 10px;
-		cursor: pointer;
-	}
-	.collapse {
-		display: none;
-	}
 
     </style>
   </head>
@@ -156,6 +65,8 @@
         <ul>
           <li><a href="./homepage.html">Home</a></li>
           <li><a href="./durianInitializer.html">Durian Initializer</a></li>
+		  <li><a href="./durianRequest.html">Durian Request</a></li>
+
           <li><a href="./durianDistribution.html">Durian Distribution</a></li>
           <li><a href="./durianTracking.html">Durian Tracking</a></li>
 		  <li><a href="#" onclick="logout()">Logout</a></li>
@@ -164,42 +75,7 @@
     </header>
 
 	<main>
-		<h3 id="titleIndicator">Durian Distribution</h3>
-		<div id="content">
-			<form>
-				<label for="durianID">Durian ID to Transfer: </label>
-				<input type="text" id="durianID" name="durianID" placeholder="Enter Durian ID" /> <br/>
-				<label for="destinationID">Destination ID: </label>
-				<input type="text" id="destinationID" name="destinationID" placeholder="Enter Destination ID" /> <br/>
-				<button id="transferBtn">Transfer</button>
-				<button id="getBtn">Get</button>
-				<br>
 
-				<label for="treeID">tree id: </label>
-				<input type="text" id="treeID" name="treeID" placeholder="TreeID" /> <br/>
-				<button id="regTree" onclick="registerTree()">regTree</button>
-				<!--get weight, harvestTime, workerHarvest, description input-->
-				<label for="DurianTreeID">Durian Tree ID: </label>
-				<input type="text" id="DurianTreeID" name="DurianTreeID" placeholder="DurianTreeID" /> <br/>
-				<label for="DurianWeight">DurianWeight: </label>
-				<input type="text" id="DurianWeight" name="DurianWeight" placeholder="TreeID" /> <br/>
-				<label for="HarvestTime">HarvestTime: </label>
-				<input type="text" id="HarvestTime" name="HarvestTime" placeholder="TreeID" /> <br/>
-				<label for="WorkerHarvest">workerHarvest: </label>
-				<input type="text" id="WorkerHarvest" name="WorkerHarvest" placeholder="TreeID" /> <br/>
-				<label for="Description">HarvestTime: </label>
-				<input type="text" id="Description" name="Description" placeholder="TreeID" /> <br/>
-
-
-				<button id="regDurian" onclick="registerDurian()">regDurian</button>
-				
-			</form>	
-			<p id="test" style="color: red;"></p>
-		</div>
-		<!--Add accordion for durian list-->
-		<div id="accordion">
-			<h3>Durian In Stock</h3>
-		</div>
 	</main>
 
     <script>
