@@ -217,7 +217,11 @@
                             </div>
                             <div class="input-segment">
                                 <label for="durianID">Durian ID: </label>
-                                <input type="text" id="durianID" name="durianID" placeholder="Durian ID" required>    
+                                <input type="text" id="durianID" name="durianID" placeholder="Durian ID" required> 
+                            </div>
+                            <div class="input-segment">
+                                <p id="durianAvai-area"></p>
+                                <button onclick="getDurianAvai()">Get Durian Availability</button>   
                             </div>
                             <button onclick="addDurianToRequest()">Add</button>
                         </form>
@@ -229,8 +233,8 @@
                         <h2>Send Durian</h2>
                         <hr/>
                         <div class="input-segment">
-                            <label for="requestID">Request ID: </label>
-                            <input type="text" name="requestID" id="requestID" required>
+                            <label for="send-requestID">Request ID: </label>
+                            <input type="text" name="send-requestID" id="send-requestID" required>
                         </div>
                         <button onclick="sendDurian()">Send</button>
                     </form>
@@ -314,6 +318,15 @@
                     const speciesCell = row.insertCell();
                     const quantityCell = row.insertCell();
                     const statusCell = row.insertCell();
+                    
+                    
+                    let status;
+                    if (request.status == 0) {
+                        status = "Pending";
+                    }
+                    else {
+                        status = "Done";
+                    }
 
                     requestIDCell.textContent = request.requestID;
                     requestIDCell.style.textAlign = "center";
@@ -323,7 +336,7 @@
                     speciesCell.style.textAlign = "center";
                     quantityCell.textContent = request.quantity;
                     quantityCell.style.textAlign = "center";
-                    statusCell.textContent = "Pending";
+                    statusCell.textContent = status;
                     statusCell.style.textAlign = "center";
                 });
             }
@@ -340,7 +353,8 @@
             const sentRequests = [];
             for (var i = 0; i < sentLength; i++) {
                 var temp = await window.contract.methods.requestSent(account, i).call({ from: account });
-                sentRequests.push({requestID: temp.requestID, destinationID: temp.destinationID, species: temp.species, quantity: temp.quantity});
+                var tempStatus = await window.contract.methods.RequestStatus(account, temp.requestID).call({ from: account });
+                sentRequests.push({requestID: temp.requestID, destinationID: temp.destinationID, species: temp.species, quantity: temp.quantity, status: tempStatus});
             }
             const tableBodySent = document.querySelector("#sent-table tbody");
 
@@ -358,6 +372,15 @@
                     const destinationIDCell = row.insertCell();
                     const speciesCell = row.insertCell();
                     const quantityCell = row.insertCell();
+                    const statusCell = row.insertCell();
+                    
+                    let status;
+                    if(request.status == 0) {
+                        status = "Pending";
+                    }
+                    else {
+                        status = "Done";
+                    }
 
                     requestIDCell.textContent = request.requestID;
                     requestIDCell.style.textAlign = "center";
@@ -367,6 +390,8 @@
                     speciesCell.style.textAlign = "center";
                     quantityCell.textContent = request.quantity;
                     quantityCell.style.textAlign = "center";
+                    statusCell.textContent = status;
+                    statusCell.style.textAlign = "center";
                 });
             }
 
@@ -401,6 +426,29 @@
 
       durianInitDisable();
 
+      const addDurianToRequest = async () => {
+        const reqID = $("#requestID").val();
+        const durianID = $("#durianID").val();
+        await window.contract.methods.addDurianToRequest(reqID, durianID).send({ from: account });
+      }
+      const sendDurian = async () => {
+        const reqID = $("#send-requestID").val();
+        await window.contract.methods.sendDurian(reqID).send({ from: account });
+      }
+
+      const getDurianAvai = async () => {
+        event.preventDefault();
+        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+        const address = accounts[0];
+        const durianID = $("#durianID").val();
+        const durianStatus = await window.contract.methods.durianStatus(address, durianID).call({ from: account });
+        if (durianStatus == 0) {
+            $("#durianAvai-area").text("Durian is available");
+        }
+        else {
+            $("#durianAvai-area").text("Durian is not available");
+        }
+      }
     </script>
 
 </body>
