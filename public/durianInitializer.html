@@ -262,7 +262,6 @@
                 <button onclick="regTree()">Register Tree</button>
             </form>    
         </div>
-        <button onclick="getTreeSpecies()">Search</button>
         <div id="reg-durian">
             <form class="init-form">
                 <h2>Register Durian</h2>
@@ -271,6 +270,7 @@
                     <input type="text" id="treeID" name="treeID" placeholder="TreeID.." required>
                 </div>
                 <p id="treeArea"></p>  
+                <button onclick="getTreeSpecies()" style="margin: 0 0 10px 0;">Display Species</button>
                 <div class="input-segment">
                     <label for="weight">Weight (g):</label>
                     <input type="number" id="weight" name="weight" placeholder="Weight (g).." required>    
@@ -288,7 +288,7 @@
                     <input type="text" id="desc" name="desc" placeholder="Description.." required>    
                 </div>
 
-                <button type="submit">Register Durian</button>
+                <button onclick="regDurian()">Register Durian</button>
             </form>    
         </div>
     </main>
@@ -326,7 +326,6 @@
         const speciesType = getSpecies(document.getElementById('species').value);
         await window.contract.methods.registerTree(speciesType).send({ from: account })
         .then(() => {
-          console.log("abc");
           alert('You have successfully register a tree');
          })
       };
@@ -374,8 +373,32 @@
           default:
             return -1;
         }
-        alert("successfully indicate usertype");
       }
+
+      const regDurian = async () => {
+        const treeID = document.getElementById("treeID").value;
+        const weight = parseInt(document.getElementById("weight").value);
+        const timeHarvest = document.getElementById("timeHarvest").value;
+        const unixTimestamp = Date.parse(timeHarvest) / 1000; // divide by 1000 to convert to seconds
+        const secondsPerBlock = 15;
+        const blockTimestamp = Math.floor(unixTimestamp / secondsPerBlock) * secondsPerBlock;
+        const workerHarvest = document.getElementById("workerHarvest").value;
+        const desc = document.getElementById("desc").value;
+        await window.contract.methods
+          .registerDurian(treeID, weight, blockTimestamp, workerHarvest, desc)
+          .send({ from: account })
+          .then((regDurian) => {
+            alert("You have successfully register a durian");
+          });
+      };
+
+      const logout = async () => {
+        await window.contract.methods.logout().send({ from: account })
+        .then((logout) => {
+          alert('You have successfully logout from account');
+          window.location.href="/registration.html";
+         });
+      };
 
     </script>
   </body>

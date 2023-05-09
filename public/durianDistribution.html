@@ -316,6 +316,13 @@
 			});
 		});
 
+		const logout = async () => {
+        await window.contract.methods.logout().send({ from: account })
+        .then((logout) => {
+          alert('You have successfully logout from account');
+          window.location.href="/registration.html";
+         });
+      };
     </script>
   </body>
 </html>
