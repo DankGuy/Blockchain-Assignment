@@ -243,7 +243,6 @@
       </div>
 
       <div class="init-area">
-        <p id="treeArea"></p>
         <div id="reg-tree">
             <form class="init-form">
                 <h2>Register Tree</h2>
@@ -263,13 +262,15 @@
                 <button onclick="regTree()">Register Tree</button>
             </form>    
         </div>
+        <button onclick="getTreeSpecies()">Search</button>
         <div id="reg-durian">
             <form class="init-form">
                 <h2>Register Durian</h2>
                 <div class="input-segment">
                     <label for="treeID">Tree ID:</label>
-                    <input type="text" id="treeID" name="treeID" placeholder="TreeID.." required>    
+                    <input type="text" id="treeID" name="treeID" placeholder="TreeID.." required>
                 </div>
+                <p id="treeArea"></p>  
                 <div class="input-segment">
                     <label for="weight">Weight (g):</label>
                     <input type="number" id="weight" name="weight" placeholder="Weight (g).." required>    
@@ -330,20 +331,31 @@
          })
       };
 
-      const getTree = async () => {
+          const getTreeSpecies = async () => {
           const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
           const address = accounts[0];
-          const treeData =await window.contract.methods.TreeIn(address,0).call();;
-          console.log(treeData);
-          document.getElementById("treeArea").innerHTML = `Tree information:<br>
-          Index: 0<br>
-          Tree ID: ${treeData.treeID},<br>
-          Species: ${treeData.treeSpecies},<br>
-          Belongs to: ${treeData.treeBelongFarmID},<br>
-          Durian count: ${treeData.durianCount}`;
-        }
+          const id = document.getElementById("treeID").value;
+          const length = await window.contract.methods.getTreeInLength().call({ from: address });
+          var tempSpecies;
+          var detected=false;
+          
+          for (let i = 0; i < length; i++) {
+              const treeData = await window.contract.methods.TreeIn(address, i).call({ from: address });
+              
+              if (treeData.treeID === id) {
+                tempSpecies=treeData.treeSpecies;
+                  detected=true;
+                  break;
+              }
+          }
+          if(detected){
+            document.getElementById("treeArea").innerHTML = `Detected Species: ${tempSpecies}`;
+          }
+          else{
+            document.getElementById("treeArea").innerHTML = `Detected Species: Tree Not Exist`;
+          }
 
-        getTree();
+      };
 
       function getSpecies(species) {
         switch (species) {
@@ -364,6 +376,7 @@
         }
         alert("successfully indicate usertype");
       }
+
     </script>
   </body>
 </html>
