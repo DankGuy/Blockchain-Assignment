@@ -244,9 +244,9 @@
                         <thead>
                             <tr>
                                 <th>Request ID</th>
-                                <th>Requester</th>
-                                <th>Request Date</th>
-                                <th>Request Status</th>
+                                <th>Destination ID</th>
+                                <th>Species</th>
+                                <th>Quantity</th>
                             </tr>    
                         </thead>
                         <tbody>
@@ -263,7 +263,14 @@
                         </div>
                         <div class="input-segment">
                             <label for="species">Species: </label>
-                            <input type="text" id="species" name="species" placeholder="Species" required>    
+                            <select name="species" id="species">
+                                <option value="0">Black Thorn</option>
+                                <option value="1">D101</option>
+                                <option value="2">D24</option>
+                                <option value="3">Musang King</option>
+                                <option value="4">Red Prawn</option>
+                                <option value="5">XO</option>
+                            </select>
                         </div>
                         <div class="input-segment">
                             <label for="quantity">Quantity: </label>
@@ -278,85 +285,93 @@
     <script>
 
         // received request
-        const receivedRequests = [];
-
         const getReceivedRequests = async () => {
+            const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+            const address = accounts[0];
+            const receivedRequests = [];
             var receivedLength = await window.contract.methods.getRequestReceivedLength().call({ from: account });
-            console.log(receivedLength);
             for (var i = 0; i < receivedLength; i++) {
                 var temp = await window.contract.methods.requestReceived(account, i).call({ from: account });
                 receivedRequests.push({requestID: temp.requestID, destinationID: temp.destinationID, species: temp.species, quantity: temp.quantity});
             }
-        }
 
-        getReceivedRequests();
+            const tableBody = document.querySelector("#received-table tbody");
 
-        const tableBody = document.querySelector("#received-table tbody");
-
-        if (receivedRequests.length === 0) {
-            const row = tableBody.insertRow();
-            const cell = row.insertCell();
-            cell.colSpan = 4;
-            cell.textContent = "No requests received";
-            cell.style.textAlign = "center";
-        }
-        else {
-            receivedRequests.forEach(request => {
+            if (receivedRequests.length === 0) {
                 const row = tableBody.insertRow();
-                const requestIDCell = row.insertCell();
-                const destinationIDCell = row.insertCell();
-                const speciesCell = row.insertCell();
-                const quantityCell = row.insertCell();
+                const cell = row.insertCell();
+                cell.colSpan = 4;
+                cell.textContent = "No requests received";
+                cell.style.textAlign = "center";
+            }
+            else {
+                receivedRequests.forEach(request => {
+                    const row = tableBody.insertRow();
+                    const requestIDCell = row.insertCell();
+                    const destinationIDCell = row.insertCell();
+                    const speciesCell = row.insertCell();
+                    const quantityCell = row.insertCell();
 
-                requestIDCell.textContent = request.requestID;
-                destinationIDCell.textContent = request.destinationID;
-                speciesCell.textContent = request.species;
-                quantityCell.textContent = request.quantity;
-            });
+                    requestIDCell.textContent = request.requestID;
+                    requestIDCell.style.textAlign = "center";
+                    destinationIDCell.textContent = request.destinationID;
+                    destinationIDCell.style.textAlign = "center";
+                    speciesCell.textContent = request.species;
+                    speciesCell.style.textAlign = "center";
+                    quantityCell.textContent = request.quantity;
+                    quantityCell.style.textAlign = "center";
+                });
+            }
         }
+        getReceivedRequests();
+  
 
         // sent request
-        const sentRequests = [];
-
         const getSentRequests = async () => {
-            var receivedLength = await window.contract.methods.getRequestSentLength().call({ from: account });
-            console.log(receivedLength);
-            for (var i = 0; i < receivedLength; i++) {
-                var temp = await window.contract.methods.requestReceived(account, i).call({ from: account });
-                receivedRequests.push({requestID: temp.requestID, destinationID: temp.destinationID, species: temp.species, quantity: temp.quantity});
+            const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+            const address = accounts[0];
+            var sentLength = await window.contract.methods.getRequestSentLength().call({ from: account });
+            console.log(sentLength);
+            const sentRequests = [];
+            for (var i = 0; i < sentLength; i++) {
+                var temp = await window.contract.methods.requestSent(account, i).call({ from: account });
+                sentRequests.push({requestID: temp.requestID, destinationID: temp.destinationID, species: temp.species, quantity: temp.quantity});
             }
+            const tableBodySent = document.querySelector("#sent-table tbody");
+
+            if (sentRequests.length === 0) {
+                const row = tableBodySent.insertRow();
+                const cell = row.insertCell();
+                cell.colSpan = 4;
+                cell.textContent = "No requests sent";
+                cell.style.textAlign = "center";
+            }
+            else {
+                sentRequests.forEach(request => {
+                    const row = tableBodySent.insertRow();
+                    const requestIDCell = row.insertCell();
+                    const destinationIDCell = row.insertCell();
+                    const speciesCell = row.insertCell();
+                    const quantityCell = row.insertCell();
+
+                    requestIDCell.textContent = request.requestID;
+                    requestIDCell.style.textAlign = "center";
+                    destinationIDCell.textContent = request.destinationID;
+                    destinationIDCell.style.textAlign = "center";
+                    speciesCell.textContent = request.species;
+                    speciesCell.style.textAlign = "center";
+                    quantityCell.textContent = request.quantity;
+                    quantityCell.style.textAlign = "center";
+                });
+            }
+
         }
 
         getSentRequests();
-
-        const tableBodySent = document.querySelector("#sent-table tbody");
-
-        if (sentRequests.length === 0) {
-            const row = tableBodySent.insertRow();
-            const cell = row.insertCell();
-            cell.colSpan = 4;
-            cell.textContent = "No requests received";
-            cell.style.textAlign = "center";
-        }
-        else {
-            sentRequests.forEach(request => {
-                const row = tableBodySent.insertRow();
-                const requestIDCell = row.insertCell();
-                const destinationIDCell = row.insertCell();
-                const speciesCell = row.insertCell();
-                const quantityCell = row.insertCell();
-
-                requestIDCell.textContent = request.requestID;
-                destinationIDCell.textContent = request.destinationID;
-                speciesCell.textContent = request.species;
-                quantityCell.textContent = request.quantity;
-            });
-        }
-
         // send request
         const sendRequest = async () => {
             const send_userID = $("#userID").val();
-            const send_species = $("#species").val();
+            const send_species = parseInt($("#species").val());
             const quantity = parseInt($("#quantity").val());
 
             await window.contract.methods.sendRequest(send_userID, send_species, quantity).send({ from: account });
