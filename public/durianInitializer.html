@@ -245,53 +245,53 @@
 
       <div class="init-area">
         <div id="reg-tree">
-            <form class="init-form">
-                <h2>Register Tree</h2>
-                <div class="input-segment">
-                    <label for="species">Species: </label>
-                    <!-- <input type="text" id="species" name="species" placeholder="Species.." required>  -->
-                    <select style="font-size: 16px" name="species" id="species">
-                      <option value="blackthorn">Black Thorn</option>
-                      <option value="d101">D101</option>
-                      <option value="d24">D24</option>
-                      <option value="musangking">Musang King</option>
-                      <option value="redprawn">Red Prawn</option>
-                      <option value="xo">XO</option>
-                    </select>
-                  <br /><br />
-                </div>
-                <button onclick="regTree()">Register Tree</button>
-            </form>    
+          <form class="init-form">
+            <h2>Register Tree</h2>
+            <div class="input-segment">
+                <label for="species">Species: </label>
+                <!-- <input type="text" id="species" name="species" placeholder="Species.." required>  -->
+                <select style="font-size: 16px" name="species" id="species">
+                  <option value="blackthorn">Black Thorn</option>
+                  <option value="d101">D101</option>
+                  <option value="d24">D24</option>
+                  <option value="musangking">Musang King</option>
+                  <option value="redprawn">Red Prawn</option>
+                  <option value="xo">XO</option>
+                </select>
+              <br /><br />
+            </div>
+            <button onclick="regTree()">Register Tree</button>
+          </form>    
         </div>
         <div id="reg-durian">
-            <form class="init-form">
-                <h2>Register Durian</h2>
-                <div class="input-segment">
-                    <label for="treeID">Tree ID:</label>
-                    <input type="text" id="treeID" name="treeID" placeholder="TreeID.." required>
-                </div>
-                <p id="treeArea"></p>  
-                <button onclick="getTreeSpecies()" style="margin: 0 0 10px 0;">Display Species</button>
-                <div class="input-segment">
-                    <label for="weight">Weight (g):</label>
-                    <input type="number" id="weight" name="weight" placeholder="Weight (g).." required>    
-                </div>
-                <div class="input-segment">
-                    <label for="timeHarvest">Time Harvested:</label>
-                    <input type="datetime-local" id="timeHarvest" name="timeHarvest" required>    
-                </div>
-                <div class="input-segment">
-                    <label for="workerHarvest">Worker Harvested:</label>
-                    <input type="text" id="workerHarvest" name="workerHarvest" placeholder="Worker Harvested.." required>    
-                </div>
-                <div class="input-segment">
-                    <label for="desc">Description:</label>
-                    <input type="text" id="desc" name="desc" placeholder="Description.." required>    
-                </div>
-
-                <button onclick="regDurian()">Register Durian</button>
-            </form>    
-        </div>
+          <form class="init-form">
+            <h2>Register Durian</h2>
+            <div class="input-segment">
+              <label for="treeID">Tree ID:</label>
+              <input type="text" id="treeID" name="treeID" placeholder="TreeID.." required>
+            </div>
+            <p id="treeArea"></p>  
+            <button onclick="getTreeSpecies()" style="margin: 0 0 10px 0;">Display Species</button>
+            <div class="input-segment">
+              <label for="weight">Weight (g):</label>
+              <input type="number" id="weight" name="weight" placeholder="Weight (g).." required>    
+            </div>
+            <div class="input-segment">
+              <label for="timeHarvest">Time Harvested:</label>
+              <input type="datetime-local" id="timeHarvest" name="timeHarvest" required>    
+            </div>
+            <div class="input-segment">
+              <label for="workerHarvest">Worker Harvested:</label>
+              <input type="text" id="workerHarvest" name="workerHarvest" placeholder="Worker Harvested.." required>    
+            </div>
+            <div class="input-segment">
+              <label for="desc">Description:</label>
+              <input type="text" id="desc" name="desc" placeholder="Description.." required>    
+            </div>
+            <button onclick="regDurian()">Register Durian</button>
+          </form>  
+        </div>  
+      </div>
     </main>
 
     <script>
