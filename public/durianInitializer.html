@@ -191,7 +191,7 @@
       <nav>
         <ul>
           <li><a href="./homepage.html">Home</a></li>
-          <li><a href="./durianInitializer.html">Durian Initializer</a></li>
+          <li id="durianInit"><a href="./durianInitializer.html">Durian Initializer</a></li>
           <li><a href="./durianRequest.html">Durian Request</a></li>
           <li><a href="./durianTracking.html">Durian Tracking</a></li>
           <li><a href="#" onclick="logout()">Logout</a></li>
@@ -259,7 +259,7 @@
                 </select>
               <br /><br />
             </div>
-            <button onclick="regTree()">Register Tree</button>
+            <button onclick="regTree()" id="reg-tree-btn">Register Tree</button>
           </form>    
         </div>
         <div id="reg-durian">
@@ -287,7 +287,7 @@
               <label for="desc">Description:</label>
               <input type="text" id="desc" name="desc" placeholder="Description.." required>    
             </div>
-            <button onclick="regDurian()">Register Durian</button>
+            <button onclick="regDurian()" id="reg-durian-btn">Register Durian</button>
           </form>  
         </div>  
       </div>
@@ -400,6 +400,16 @@
          });
       };
 
+      const durianInitDisable = async () => {
+        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+        const address = accounts[0];
+        const user = await window.contract.methods.user(address).call({ from: account });
+        if (user.UserType != 0) {
+          $("#durianInit").hide();
+        }
+      }
+
+      durianInitDisable();
     </script>
   </body>
 </html>

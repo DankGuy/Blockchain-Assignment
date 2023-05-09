@@ -179,7 +179,7 @@
         <nav>
           <ul>
             <li><a href="./homepage.html">Home</a></li>
-            <li><a href="./durianInitializer.html">Durian Initializer</a></li>
+            <li id="durianInit"><a href="./durianInitializer.html">Durian Initializer</a></li>
             <li><a href="./durianRequest.html">Durian Request</a></li>
             <li><a href="./durianTracking.html">Durian Tracking</a></li>
             <li><a href="#" onclick="logout()">Logout</a></li>
@@ -200,6 +200,7 @@
                                     <th>Destination ID</th>
                                     <th>Species</th>
                                     <th>Quantity</th>
+                                    <th>Status</th>
                                 </tr>    
                             </thead>
                             <tbody>
@@ -246,6 +247,7 @@
                                 <th>Destination ID</th>
                                 <th>Species</th>
                                 <th>Quantity</th>
+                                <th>Status</th>
                             </tr>    
                         </thead>
                         <tbody>
@@ -291,7 +293,8 @@
             var receivedLength = await window.contract.methods.getRequestReceivedLength().call({ from: account });
             for (var i = 0; i < receivedLength; i++) {
                 var temp = await window.contract.methods.requestReceived(account, i).call({ from: account });
-                receivedRequests.push({requestID: temp.requestID, destinationID: temp.destinationID, species: temp.species, quantity: temp.quantity});
+                var tempStatus = await window.contract.methods.RequestStatus(account, temp.requestID).call({ from: account });
+                receivedRequests.push({requestID: temp.requestID, destinationID: temp.destinationID, species: temp.species, quantity: temp.quantity, status: tempStatus});
             }
 
             const tableBody = document.querySelector("#received-table tbody");
@@ -310,6 +313,7 @@
                     const destinationIDCell = row.insertCell();
                     const speciesCell = row.insertCell();
                     const quantityCell = row.insertCell();
+                    const statusCell = row.insertCell();
 
                     requestIDCell.textContent = request.requestID;
                     requestIDCell.style.textAlign = "center";
@@ -319,6 +323,8 @@
                     speciesCell.style.textAlign = "center";
                     quantityCell.textContent = request.quantity;
                     quantityCell.style.textAlign = "center";
+                    statusCell.textContent = "Pending";
+                    statusCell.style.textAlign = "center";
                 });
             }
         }
@@ -383,6 +389,17 @@
             window.location.href="/registration.html";
             });
         };
+
+        const durianInitDisable = async () => {
+            const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+            const address = accounts[0];
+            const user = await window.contract.methods.user(address).call({ from: account });
+            if (user.UserType != 0) {
+            $("#durianInit").hide();
+            }
+        }
+
+      durianInitDisable();
 
     </script>
 

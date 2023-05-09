@@ -107,7 +107,7 @@
         <nav>
           <ul>
 			<li><a href="./homepage.html">Home</a></li>
-			<li><a href="./durianInitializer.html">Durian Initializer</a></li>
+			<li id="durianInit"><a href="./durianInitializer.html">Durian Initializer</a></li>
 			<li><a href="./durianRequest.html">Durian Request</a></li>
 			<li><a href="./durianTracking.html">Durian Tracking</a></li>
 			<li><a href="#" onclick="logout()">Logout</a></li>
@@ -208,9 +208,9 @@
 			}
 			// const updateInfo= await window.contract.methods.updateDurian(id,blockTimestamp,).call();
 
-      };
+		};
 
-	  const confirmUpdate = async () => {
+		const confirmUpdate = async () => {
 			event.preventDefault();	
 			const user=await window.contract.methods.user(account).call();
 			const userType=user.UserType;		
@@ -230,36 +230,47 @@
 			console.log(temptaste);
 			console.log(tempfragrance);
 			const updateDurian=window.contract.methods.updateDurian(id,blockTimestamp,tempcreaminess,temptaste,tempfragrance).call({from : account});
-      };
+      	};
 
-	  function getRating(type) {
-        switch (type) {
-          case "0":
-            return 0;
-          case "1":
-            return 1;
-          case "2":
-            return 2;
-          case "3":
-            return 3;
-	      case "4":
-            return 4;
-          default:
-            return -1;
-        }
-        alert("successfully indicate usertype");
-      }
+		function getRating(type) {
+			switch (type) {
+			case "0":
+				return 0;
+			case "1":
+				return 1;
+			case "2":
+				return 2;
+			case "3":
+				return 3;
+			case "4":
+				return 4;
+			default:
+				return -1;
+			}
+			alert("successfully indicate usertype");
+		}
 
 
 
 
 		const logout = async () => {
-        await window.contract.methods.logout().send({ from: account })
-        .then((logout) => {
-          alert('You have successfully logout from account');
-          window.location.href="/registration.html";
-         });
-      };
+			await window.contract.methods.logout().send({ from: account })
+			.then((logout) => {
+			alert('You have successfully logout from account');
+			window.location.href="/registration.html";
+			});
+		};
+
+		const durianInitDisable = async () => {
+			const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+			const address = accounts[0];
+			const user = await window.contract.methods.user(address).call({ from: account });
+			if (user.UserType != 0) {
+			$("#durianInit").hide();
+			}
+		}
+
+      durianInitDisable();
 
 </script>
 
