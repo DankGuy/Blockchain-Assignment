@@ -120,6 +120,7 @@
             <input type="text" id ="durianID" name="durianID" placeholder="Durian ID">
 			<button onclick="searchDurian()">Search</button>
 			<p id="durianArea"></p>
+			<p id="updateArea"></p>
 			<button id="updateBtn" onclick="update()">Update</button>
 			<div id="updateInput">
 				<label for="timeArrival">Time Arrival: </label><br>
@@ -179,14 +180,6 @@
 			Harvest Info<br>
 			Time Harvest : ${durianData.harvestInfo.timeHarvest}<br>
 			Worker Harvest : ${durianData.harvestInfo.workerHarvest}<br><br>
-			Update Information<br>
-			Time Arrival in Distribution Centre: ${updateInfo.timeArrivalDC}<br>
-			Time Arrival in Retailer: ${updateInfo.timeArrivalRetailer}<br>
-			Time Arrival in Consumer: ${updateInfo.timeConsume}<br><br>
-			Rating:<br>
-			Creaminess(1-5):${updateInfo.rate_creaminess}<br>  
-			Taste(1-5):${updateInfo.rate_taste}<br> 
-			Fragrance(1-5):${updateInfo.rate_fragrance}<br> 
 			`;
 			const user=await window.contract.methods.user(account).call();
 			const userType=user.UserType;
@@ -194,6 +187,21 @@
 			if(userType!=0){
 				z.style.display="block";
 			}
+			document.getElementById("updateArea").innerHTML =`
+			Update Information<br>
+			Time Arrival in Distribution Centre: ${updateInfo.timeArrivalDC}<br>
+			Time Arrival in Retailer: ${updateInfo.timeArrivalRetailer}<br>
+			Time Arrival in Consumer: ${updateInfo.timeConsume}<br><br>
+			Rating:<br>
+			Creaminess(1-5):${updateInfo.rate_creaminess}<br>  
+			Taste(1-5):${updateInfo.rate_taste}<br> 
+			Fragrance(1-5):${updateInfo.rate_fragrance}<br> `;
+			var a = document.getElementById("updateArea");
+			if(durianData.durianBelongTree.treeID==""){
+				a.style.display='none';
+			}
+			
+			
 		};
 
 		const update = async () => {
