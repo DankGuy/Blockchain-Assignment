@@ -342,7 +342,24 @@
             }
         }
         getReceivedRequests();
-  
+        
+        //disable send request part for farm and received request part for consumer
+        const DisablePart = async () => {
+            const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+            const address = accounts[0];
+            const user=await window.contract.methods.user(address).call();
+			const userType=user.UserType;
+            console.log(userType);
+            
+			if(userType==3){
+				$(".received-div").hide();
+			}
+            if(userType==0){
+                $(".sent-div").hide();
+            }
+        };
+
+        DisablePart();
 
         // sent request
         const getSentRequests = async () => {

@@ -112,8 +112,8 @@
         </div>
     </div>
       <br />
-      <button onclick="getUser()">GetInfo</button> <br />
-      <p id="InfoArea"></p>
+      <!-- <button onclick="getUser()">GetInfo</button> <br /> -->
+      <!-- <p id="InfoArea"></p> -->
       <br />
     <script>
 
@@ -143,12 +143,13 @@
         ).innerHTML = `Detected User ID: ${userData.ID}`;
       };
 
+      getUser();
       getID();
 
       const login = async () => {
         const LoginPassword = document.getElementById("loginpw").value;
         await window.contract.methods.login(LoginPassword).send({ from: account })
-        .then((login) => {
+        .then(() => {
           console.log("abc");
           alert('You have successfully login from account');
           window.location.href="/homepage.html";
